@@ -1,0 +1,1 @@
+CSS related files go here and can be referenced using the {{file_dest}} keyword replacement inside CSS or SCSS files.
