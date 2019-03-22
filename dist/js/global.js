@@ -55,95 +55,92 @@ $(document).ready(function () {
 // const arrayCategories = [111111, 333333, 444444, 777777, 181818, 212121];
 // const toAdd = [];
 
-$(document).ready(function () {
-  if ($('.topics').length > 0) {
-    // console.log('topics');
-    // console.log('start categories ' + arrayCategories);
-    // console.log('start taAdd ' + toAdd);
-
-    //apply active class to subscribed categories
-    getCategories(user);
-
-    // add/remove category on Click
-    $('ul.topics-list .topics-list__item').on('click', function (e) {
-      e.preventDefault();
-      var $this = $(this);
-      $this.toggleClass('active');
-    });
-
-    //submit selections
-    $('.nextButton p').on('click', function (e) {
-      e.preventDefault();
-      var $this = $(this);
-      var destination = $this.data('destinationurl');
-      $('ul.topics-list .topics-list__item').each(function () {
-        if ($(this).hasClass('active')) {
-          // console.log($(this).data('subscription'));
-          toAdd.push($(this).data('subscription'));
-        }
-      });
-      // console.log('end toAdd ' + toAdd);
-      setCategories(user);
-
-      window.location.href = destination;
-    });
-  }
-
-  //get metadata and apply active class accordingly
-  function getCategories(assetId) {
-    js_api.getMetadata({
-      "asset_id": assetId,
-      "dataCallback": storeToArray
-    });
-
-    function storeToArray(object) {
-      arrayCategories = object["Selected.Topics"].split('; ');
-      console.log(arrayCategories);
-      $('ul.topics-list .topics-list__item').each(function () {
-        var $this = $(this);
-        var category = $this.data('subscription');
-        if (arrayCategories.indexOf(category) != -1) {
-          $this.addClass('active');
-        }
-      });
-    }
-  }
-
-  //acquire lock, save metadata, relase lock
-  function setCategories(assetId) {
-    console.log("acquire lock on #" + assetId);
-    js_api.acquireLock({
-      "asset_id": assetId,
-      "dependants_only": 0,
-      "force_acquire": true,
-      "dataCallback": setAssetMetadata
-    });
-
-    function setAssetMetadata(object) {
-      console.log(object);
-      if (object[0]["warning"]) {
-        errorMessage();
-      } else {
-        var setStringCategories = toAdd.join('; ');
-        console.log(setStringCategories);
-        js_api.setMetadata({
-          "asset_id": assetId,
-          "field_id": 448763,
-          "field_val": setStringCategories,
-          "dataCallback": function dataCallback() {
-            releaseLock(assetId);
-          }
-        });
-      }
-    }
-
-    function releaseLock(assetId) {
-      console.log("relese lock on #" + assetId);
-      js_api.releaseLock({
-        "asset_id": assetId //,
-        // "dataCallback":logToConsole
-      });
-    }
-  }
-});
+// $(document).ready(function () {
+//   if ($('.topics').length > 0) {
+//     // console.log('topics');
+//     // console.log('start categories ' + arrayCategories);
+//     // console.log('start taAdd ' + toAdd);
+//
+//     //apply active class to subscribed categories
+//     getCategories(user);
+//
+//     // add/remove category on Click
+//     $('ul.topics-list .topics-list__item').on('click', function (e) {
+//       e.preventDefault();
+//       let $this = $(this);
+//       $this.toggleClass('active');
+//     });
+//
+//     //submit selections
+//     $('.nextButton p').on('click', function(e){
+//       e.preventDefault();
+//       let $this = $(this);
+//       let destination = $this.data('destinationurl');
+//       $('ul.topics-list .topics-list__item').each(function () {
+//           if ($(this).hasClass('active')) {
+//             // console.log($(this).data('subscription'));
+//             toAdd.push($(this).data('subscription'));
+//           }
+//       });
+//       // console.log('end toAdd ' + toAdd);
+//       setCategories(user);
+//
+//       window.location.href = destination;
+//     });
+//   }
+// });
+//
+// //get metadata and apply active class accordingly
+// function getCategories(assetId) {
+//   js_api.getMetadata({
+//     "asset_id": assetId,
+//     "dataCallback": storeToArray
+//   });
+//   function storeToArray(object) {
+//     arrayCategories = object["Selected.Topics"].split('; ');
+//     console.log(arrayCategories);
+//     $('ul.topics-list .topics-list__item').each(function () {
+//       let $this = $(this);
+//       let category = $this.data('subscription');
+//       if (arrayCategories.indexOf(category) != -1) {
+//         $this.addClass('active');
+//       }
+//     });
+//   }
+// }
+//
+// //acquire lock, save metadata, relase lock
+// function setCategories(assetId) {
+//   console.log("acquire lock on #" + assetId );
+//   js_api.acquireLock({
+//     "asset_id": assetId,
+//     "dependants_only":0,
+//     "force_acquire":true,
+//     "dataCallback": setAssetMetadata
+//   });
+//   function setAssetMetadata(object) {
+//     console.log(object);
+//     if (object[0]["warning"]) {
+//       errorMessage();
+//     } else {
+//       var setStringCategories = toAdd.join('; ');
+//       console.log(setStringCategories);
+//       js_api.setMetadata({
+//         "asset_id":assetId,
+//         "field_id":448763,
+//         "field_val": setStringCategories ,
+//         "dataCallback":function() {
+//           releaseLock(assetId);
+//         }
+//       });
+//     }
+//   }
+//   function releaseLock(assetId) {
+//     console.log("relese lock on #" + assetId );
+//     js_api.releaseLock({
+//       "asset_id":assetId //,
+//       // "dataCallback":logToConsole
+//     });
+//   }
+// }
 //# sourceMappingURL=global.js.map
