@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Fri Mar 22 2019 11:14:29 GMT+0000 (GMT) - First revision
+ *     Fri Mar 22 2019 11:41:24 GMT+0000 (GMT) - First revision
  */
 
 /*
@@ -80,9 +80,9 @@ $(document).ready(function () {
         }
       });
       // console.log('end toAdd ' + toAdd);
-      setCategories(user);
+      setCategories(user, destination);
 
-      window.location.href = destination;
+      // window.location.href = destination;
     });
   }
 });
@@ -108,7 +108,7 @@ function getCategories(assetId) {
 }
 
 //acquire lock, save metadata, relase lock
-function setCategories(assetId) {
+function setCategories(assetId, urlDestination) {
   js_api.acquireLock({
     "asset_id": assetId,
     "dependants_only": 0,
@@ -132,9 +132,12 @@ function setCategories(assetId) {
   }
   function releaseLock(assetId) {
     js_api.releaseLock({
-      "asset_id": assetId //,
-      // "dataCallback":logToConsole
+      "asset_id": assetId,
+      "dataCallback": redirect
     });
+  }
+  function redirect() {
+    window.location.href = urlDestination;
   }
 }
 //# sourceMappingURL=global.js.map
