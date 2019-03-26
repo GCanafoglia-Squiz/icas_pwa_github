@@ -71,12 +71,10 @@ $(document).ready(function () {
     //submit selections
     $('.nextButton a').on('click', function (e) {
       e.preventDefault();
-      console.log('click');
       var $this = $(this);
       var destination = $this.attr('href');
       $('ul.topics-list .topics-list__item').each(function () {
         if ($(this).hasClass('active')) {
-          // console.log($(this).data('subscription'));
           toAdd.push($(this).data('subscription'));
         }
       });
@@ -114,6 +112,8 @@ function setCategories(assetId, urlDestination) {
     "dataCallback": setAssetMetadata
   });
   function setAssetMetadata(object) {
+    consolelog('seta metadata. object:');
+    console.log(object);
     if (object[0]["warning"] || object["errorCode"] == "permissionError") {
       console.log('An error has occurred, maybe you are offline. please try again later.');
     } else {
