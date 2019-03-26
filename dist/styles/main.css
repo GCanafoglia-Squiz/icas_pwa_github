@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Fri Mar 22 2019 11:41:24 GMT+0000 (GMT)
+ * updated: Tue Mar 26 2019 14:37:51 GMT+0000 (GMT)
  *
  * Table of Contents
  *
@@ -536,6 +536,7 @@ Modules
 }
 
 .main_list .articles_list--element .img_wrapper, .main_list .articles_list--element-video .img_wrapper {
+  background: url(mysource_files/img_wrapper.png) center center/contain no-repeat;
   position: relative;
   padding-bottom: 100px;
   height: 0;

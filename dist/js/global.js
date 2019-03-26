@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Fri Mar 22 2019 11:41:24 GMT+0000 (GMT) - First revision
+ *     Tue Mar 26 2019 14:37:51 GMT+0000 (GMT) - First revision
  */
 
 /*
@@ -116,6 +116,7 @@ function setCategories(assetId, urlDestination) {
     "dataCallback": setAssetMetadata
   });
   function setAssetMetadata(object) {
+    console.log(object);
     if (object[0]["warning"]) {
       errorMessage();
     } else {
