@@ -114,7 +114,7 @@ function setCategories(assetId, urlDestination) {
   function setAssetMetadata(object) {
     console.log('seta metadata. object:');
     console.log(object);
-    if (object[0]["warning"] || object["errorCode"] == "permissionError") {
+    if ( /* object[0]["warning"] || */object["errorCode"] == "permissionError") {
       console.log('An error has occurred, maybe you are offline. please try again later.');
     } else {
       var setStringCategories = toAdd.join('; ');

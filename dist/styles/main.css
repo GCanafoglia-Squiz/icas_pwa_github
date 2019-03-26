@@ -551,8 +551,10 @@ Modules
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 140%;
-  max-width: 140%;
+  max-width: 500px;
+  max-height: 100px;
+  width: auto;
+  height: auto;
 }
 
 .main_list .articles_list--element .content_wrapper, .main_list .articles_list--element-video .content_wrapper {
