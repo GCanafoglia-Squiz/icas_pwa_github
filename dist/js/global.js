@@ -116,7 +116,7 @@ function setCategories(assetId, urlDestination) {
     "dataCallback": setAssetMetadata
   });
   function setAssetMetadata(object) {
-    console.log(object["errorCode"]);
+    console.log(object);
     if (object[0]["warning"]) {
       errorMessage();
     } else {
