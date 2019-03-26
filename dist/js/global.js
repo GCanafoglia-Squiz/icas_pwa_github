@@ -116,8 +116,8 @@ function setCategories(assetId, urlDestination) {
     "dataCallback": setAssetMetadata
   });
   function setAssetMetadata(object) {
-    console.log(object);
-    if (object[0]["warning"]) {
+    console.log(object["error"]);
+    if (object[0]["warning"] || object) {
       errorMessage();
     } else {
       var setStringCategories = toAdd.join('; ');
