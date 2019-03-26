@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Tue Mar 26 2019 14:37:51 GMT+0000 (GMT)
+ * updated: Tue Mar 26 2019 15:33:06 GMT+0000 (GMT)
  *
  * Table of Contents
  *
@@ -536,7 +536,7 @@ Modules
 }
 
 .main_list .articles_list--element .img_wrapper, .main_list .articles_list--element-video .img_wrapper {
-  background: url(mysource_files/img_wrapper.png) center center/contain no-repeat;
+  background: url(mysource_files/img_wrapper.png) center center/cover no-repeat;
   position: relative;
   padding-bottom: 100px;
   height: 0;
@@ -934,12 +934,13 @@ header .menutrigger {
   padding: 0 37px;
 }
 
-.nextButton p {
+.nextButton a {
+  color: black;
+  text-decoration: none;
   font-size: 1.42857rem;
   font-weight: 500;
   margin: 0;
   line-height: 3.21429rem;
-  cursor: pointer;
 }
 
 @media (min-width: 37.5em) {

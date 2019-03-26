@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Tue Mar 26 2019 14:37:51 GMT+0000 (GMT) - First revision
+ *     Tue Mar 26 2019 15:33:06 GMT+0000 (GMT) - First revision
  */
 
 /*
@@ -69,20 +69,18 @@ $(document).ready(function () {
     });
 
     //submit selections
-    $('.nextButton p').on('click', function (e) {
+    $('.nextButton a').on('click', function (e) {
       e.preventDefault();
+      console.log('click');
       var $this = $(this);
-      var destination = $this.data('destinationurl');
+      var destination = $this.attr('href');
       $('ul.topics-list .topics-list__item').each(function () {
         if ($(this).hasClass('active')) {
           // console.log($(this).data('subscription'));
           toAdd.push($(this).data('subscription'));
         }
       });
-      // console.log('end toAdd ' + toAdd);
       setCategories(user, destination);
-
-      // window.location.href = destination;
     });
   }
 });
@@ -116,9 +114,8 @@ function setCategories(assetId, urlDestination) {
     "dataCallback": setAssetMetadata
   });
   function setAssetMetadata(object) {
-    console.log(object["error"]);
-    if (object[0]["warning"] || object) {
-      errorMessage();
+    if (object[0]["warning"] || object["errorCode"] == "permissionError") {
+      console.log('An error has occurred, maybe you are offline. please try again later.');
     } else {
       var setStringCategories = toAdd.join('; ');
       js_api.setMetadata({
