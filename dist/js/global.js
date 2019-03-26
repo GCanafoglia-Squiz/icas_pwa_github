@@ -112,7 +112,7 @@ function setCategories(assetId, urlDestination) {
     "dataCallback": setAssetMetadata
   });
   function setAssetMetadata(object) {
-    consolelog('seta metadata. object:');
+    console.log('seta metadata. object:');
     console.log(object);
     if (object[0]["warning"] || object["errorCode"] == "permissionError") {
       console.log('An error has occurred, maybe you are offline. please try again later.');
