@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Tue Mar 26 2019 15:33:06 GMT+0000 (GMT) - First revision
+ *     Fri Mar 29 2019 10:14:18 GMT+0000 (GMT) - First revision
  */
 
 /*
@@ -51,9 +51,6 @@ $(document).ready(function () {
 //
 // this part is in Matrix end
 
-
-// const arrayCategories = [111111, 333333, 444444, 777777, 181818, 212121];
-// const toAdd = [];
 
 $(document).ready(function () {
   if ($('.topics').length > 0) {
