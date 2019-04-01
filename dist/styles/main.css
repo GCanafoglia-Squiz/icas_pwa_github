@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Fri Mar 29 2019 10:14:18 GMT+0000 (GMT)
+ * updated: Mon Apr 01 2019 12:02:11 GMT+0100 (BST)
  *
  * Table of Contents
  *
@@ -508,11 +508,171 @@ body.gray {
   background-color: #006EB6;
 }
 
+.reader_only {
+  display: none;
+}
+
 /*
 --------------------
 Modules
 --------------------
 */
+/* Module: S */
+.back_arrow {
+  margin: 13px 0px 0px 35px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  padding: 3px 10px;
+  height: 30px;
+  position: relative;
+}
+
+.back_arrow a {
+  font-size: 1rem;
+  line-height: 1.78571rem;
+  color: #222;
+  text-decoration: none;
+}
+
+.back_arrow:before {
+  content: '';
+  position: absolute;
+  transform: rotate(45deg);
+  width: 20px;
+  height: 20px;
+  left: -10px;
+  top: 5px;
+  z-index: -1;
+  -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+}
+
+.back_arrow:after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: -15px;
+  top: 0px;
+  border-style: solid;
+  border-width: 15px 15px 15px 0;
+  border-color: transparent #ffffff transparent transparent;
+}
+
+.article {
+  margin: 15px;
+  padding: 15px;
+  background-color: #ffffff;
+}
+
+.article h1, .article h2, .article h3, .article h4 {
+  margin-top: 0px;
+}
+
+.article h1 a, .article h2 a, .article h3 a, .article h4 a {
+  color: #222;
+  text-decoration: none;
+}
+
+.article .introimage {
+  width: 100%;
+  height: 0;
+  padding-bottom: 146px;
+  overflow: hidden;
+  margin: 0px;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.article .introimage .image {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+
+.article .socialicons {
+  margin-bottom: 14px;
+}
+
+.article .socialicons .button {
+  font-size: 0.71429rem;
+  line-height: 1.42857rem;
+  background-color: #575656;
+  height: 30px;
+  margin: 0;
+}
+
+@media screen and (min-width: 321px) {
+  .article .socialicons .button {
+    font-size: 0.85714rem;
+    line-height: 1.07143rem;
+  }
+}
+
+.article .socialicons .button:focus, .article .socialicons .button:hover {
+  background-color: #81bb26;
+  color: #222;
+  text-decoration: none;
+}
+
+.article .socialicons .button.active {
+  background-color: #81bb26;
+  color: #222;
+  position: relative;
+}
+
+.article .socialicons .button.active:before {
+  display: block;
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 10px;
+  left: 14px;
+  top: 8px;
+  transform: rotate(45deg);
+  border-style: solid;
+  border-color: transparent black black transparent;
+  border-width: 1px;
+}
+
+.article .socialicons ul.share {
+  padding: 0;
+  margin: 0;
+  float: right;
+}
+
+.article .socialicons ul.share li {
+  display: inline-block;
+}
+
+.article .socialicons ul.share li a {
+  width: 30px;
+  height: 30px;
+  border-radius: 15px;
+  display: block;
+}
+
+.article .socialicons ul.share li a.twitter {
+  background: #575656 url(mysource_files/twitter-icon.svg) center center/13px 13px no-repeat;
+}
+
+.article .socialicons ul.share li a.facebook {
+  background: #575656 url(mysource_files/facebook-icon.svg) center center/13px 13px no-repeat;
+}
+
+.article .socialicons ul.share li a.linkedin {
+  background: #575656 url(mysource_files/linkedin-icon.svg) center center/13px 13px no-repeat;
+}
+
 /* Module: S */
 .main_list {
   padding: 0 10px 80px 10px;
