@@ -563,22 +563,27 @@ Modules
   border-color: transparent #ffffff transparent transparent;
 }
 
-.article {
+.main_article {
   margin: 15px;
   padding: 15px;
   background-color: #ffffff;
 }
 
-.article h1, .article h2, .article h3, .article h4 {
+.main_article h1, .main_article h2, .main_article h3, .main_article h4 {
   margin-top: 0px;
 }
 
-.article h1 a, .article h2 a, .article h3 a, .article h4 a {
+.main_article h1 a, .main_article h2 a, .main_article h3 a, .main_article h4 a {
   color: #222;
   text-decoration: none;
 }
 
-.article .introimage {
+.main_article p a {
+  color: #222;
+  text-decoration: none;
+}
+
+.main_article .introimage {
   width: 100%;
   height: 0;
   padding-bottom: 146px;
@@ -588,7 +593,7 @@ Modules
   position: relative;
 }
 
-.article .introimage .image {
+.main_article .introimage .image {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -599,11 +604,11 @@ Modules
   right: 0px;
 }
 
-.article .socialicons {
+.main_article .socialicons {
   margin-bottom: 14px;
 }
 
-.article .socialicons .button {
+.main_article .socialicons .button {
   font-size: 0.71429rem;
   line-height: 1.42857rem;
   background-color: #575656;
@@ -612,25 +617,25 @@ Modules
 }
 
 @media screen and (min-width: 321px) {
-  .article .socialicons .button {
+  .main_article .socialicons .button {
     font-size: 0.85714rem;
     line-height: 1.07143rem;
   }
 }
 
-.article .socialicons .button:focus, .article .socialicons .button:hover {
+.main_article .socialicons .button:focus, .main_article .socialicons .button:hover {
   background-color: #81bb26;
   color: #222;
   text-decoration: none;
 }
 
-.article .socialicons .button.active {
+.main_article .socialicons .button.active {
   background-color: #81bb26;
   color: #222;
   position: relative;
 }
 
-.article .socialicons .button.active:before {
+.main_article .socialicons .button.active:before {
   display: block;
   content: "";
   position: absolute;
@@ -644,32 +649,32 @@ Modules
   border-width: 1px;
 }
 
-.article .socialicons ul.share {
+.main_article .socialicons ul.share {
   padding: 0;
   margin: 0;
   float: right;
 }
 
-.article .socialicons ul.share li {
+.main_article .socialicons ul.share li {
   display: inline-block;
 }
 
-.article .socialicons ul.share li a {
+.main_article .socialicons ul.share li a {
   width: 30px;
   height: 30px;
   border-radius: 15px;
   display: block;
 }
 
-.article .socialicons ul.share li a.twitter {
+.main_article .socialicons ul.share li a.twitter {
   background: #575656 url(mysource_files/twitter-icon.svg) center center/13px 13px no-repeat;
 }
 
-.article .socialicons ul.share li a.facebook {
+.main_article .socialicons ul.share li a.facebook {
   background: #575656 url(mysource_files/facebook-icon.svg) center center/13px 13px no-repeat;
 }
 
-.article .socialicons ul.share li a.linkedin {
+.main_article .socialicons ul.share li a.linkedin {
   background: #575656 url(mysource_files/linkedin-icon.svg) center center/13px 13px no-repeat;
 }
 
