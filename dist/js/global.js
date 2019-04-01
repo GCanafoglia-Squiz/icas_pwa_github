@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Mon Apr 01 2019 12:02:11 GMT+0100 (BST) - First revision
+ *     Mon Apr 01 2019 17:22:55 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -33,6 +33,157 @@ Modules
 --------------------
 */
 
+// This part in Matrix Start
+//
+// var user = 431889;
+// let actualArticles = [];
+// let toSaveArticles = [];
+//
+// This part in Matrix End
+
+$(document).ready(function () {
+  if ($('.main_article').length > 0) {
+
+    getArticles(user);
+
+    $('.socialicons .button').on('click', function (e) {
+      e.preventDefault();
+      console.log('click');
+      var $this = $(this);
+      if ($this.hasClass('active')) {
+        console.log('active');
+        var actualArticle = $this.attr('data-articleid');
+        console.log('actual article = ' + actualArticle);
+        removeFromRecord(user, actualArticle, $this);
+      } else {
+        console.log('not active');
+        var _actualArticle = $this.attr('data-articleid') + ';';
+        console.log('actual article = ' + _actualArticle);
+        addToRecord(user, _actualArticle, $this);
+      }
+    });
+  }
+});
+//remove articleId from metadata
+function removeFromRecord(assetId, articleId, button) {
+  var actualArticlesString = void 0;
+  js_api.acquireLock({
+    "asset_id": assetId,
+    "dependants_only": 0,
+    "force_acquire": true,
+    "dataCallback": remArticleMetadata
+  });
+  function remArticleMetadata(object) {
+    console.log('remove metadata. object:');
+    console.log(object);
+    if (object[0]["warning"] || object["errorCode"] == "permissionError") {
+      console.log('An error has occurred, maybe you are offline. please try again later.');
+    } else {
+      js_api.getMetadata({
+        "asset_id": assetId,
+        "dataCallback": storeToArrayToRemove
+      });
+    }
+  }
+  function storeToArrayToRemove(object) {
+    $('.main_article').attr('data-articlelist', object["Saved.Record"]);
+    actualArticles = object["Saved.Record"].split(';');
+    if (actualArticles.indexOf(articleId) != -1) {
+      console.log('is in');
+      for (var i in actualArticles) {
+        if (actualArticles[i] == articleId) {
+          actualArticles.splice(i, 1);
+          break;
+        }
+      }
+      actualArticlesString = actualArticles.join(';');
+      js_api.setMetadata({
+        "asset_id": assetId,
+        "field_id": 451003,
+        "field_val": actualArticlesString,
+        "dataCallback": function dataCallback() {
+          releaseLockListArticle(assetId);
+        }
+      });
+    }
+  }
+  function releaseLockListArticle(assetId) {
+    js_api.releaseLock({
+      "asset_id": assetId,
+      "dataCallback": function dataCallback() {
+        setNonActive(button);
+      }
+    });
+  }
+  function setNonActive(button) {
+    $('.main_article').attr('data-articlelist', actualArticlesString);
+    button.removeClass('active');
+  }
+}
+
+//add articleId to metadata
+function addToRecord(assetId, articleId, button) {
+  js_api.acquireLock({
+    "asset_id": assetId,
+    "dependants_only": 0,
+    "force_acquire": true,
+    "dataCallback": setArticleMetadata
+  });
+  function setArticleMetadata(object) {
+    console.log('seta metadata. object:');
+    console.log(object);
+    if (object[0]["warning"] || object["errorCode"] == "permissionError") {
+      console.log('An error has occurred, maybe you are offline. please try again later.');
+    } else {
+      var alreadysaved = $('.main_article').attr('data-articlelist');
+      toSaveArticles = alreadysaved + articleId;
+      $('.main_article').attr('data-articlelist', toSaveArticles);
+      console.log(toSaveArticles);
+      js_api.setMetadata({
+        "asset_id": assetId,
+        "field_id": 451003,
+        "field_val": toSaveArticles,
+        "dataCallback": function dataCallback() {
+          releaseLockArticle(assetId);
+        }
+      });
+    }
+  }
+  function releaseLockArticle(assetId) {
+    js_api.releaseLock({
+      "asset_id": assetId,
+      "dataCallback": function dataCallback() {
+        setActive(button);
+      }
+    });
+  }
+  function setActive(button) {
+    button.addClass('active');
+  }
+}
+
+//get metadata and apply active class accordingly
+function getArticles(assetId) {
+  js_api.getMetadata({
+    "asset_id": assetId,
+    "dataCallback": storeToArray
+  });
+  function storeToArray(object) {
+    if (object["Saved.Record"]) {
+      //   console.log('article before split: ' + object["Saved.Record"]);
+      $('.main_article').attr('data-articlelist', object["Saved.Record"]);
+      actualArticles = object["Saved.Record"].split(';');
+      //   console.log('article after split: ' + actualArticles);
+      $('.socialicons .button').each(function () {
+        var $this = $(this);
+        var articleid = $this.attr('data-articleid').toString();
+        if (actualArticles.indexOf(articleid) != -1) {
+          $this.addClass('active');
+        }
+      });
+    }
+  }
+}
 $(document).ready(function () {
   $('.menutrigger').on('click', function () {
     $('.slide_in_menu').toggleClass('slide_in_menu_open');
