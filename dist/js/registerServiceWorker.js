@@ -122,7 +122,7 @@ function unregister() {
   }
 }
 
-register('/sewo.js', {
+register('/sw.js', {
   registrationOptions: { scope: './' },
   ready: function ready(registration) {
     console.log('Service worker is active.');
