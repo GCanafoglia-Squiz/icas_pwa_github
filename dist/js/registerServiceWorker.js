@@ -1,15 +1,17 @@
 'use strict';
 
-// if ('serviceWorker' in navigator) {
-//   window.addEventListener('load', () => {
-//     navigator.serviceWorker.register('/sw.js')
-//         .then((registration) => {
-//           console.log(registration);
-//           firebase.messaging().useServiceWorker(registration);
-//         })
-//         .catch(err => console.log('SW error!', err));
-//   });
-// }
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function () {
+    navigator.serviceWorker.register('/sw.js').then(function (registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function (err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+
 // Register a service worker to serve assets from local cache.
 
 // This lets the app load faster on subsequent visits in production, and gives
@@ -17,133 +19,135 @@
 // will only see deployed updates on the "N+1" visit to a page, since previously
 // cached resources are updated in the background.
 
-var isLocalhost = function isLocalhost() {
-  return Boolean(window.location.hostname === 'localhost' ||
-  // [::1] is the IPv6 localhost address.
-  window.location.hostname === '[::1]' ||
-  // 127.0.0.1/8 is considered localhost for IPv4.
-  window.location.hostname.match(/^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/));
-};
-
-function register(swUrl) {
-  var hooks = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  var _hooks$registrationOp = hooks.registrationOptions,
-      registrationOptions = _hooks$registrationOp === undefined ? {} : _hooks$registrationOp;
-
-  delete hooks.registrationOptions;
-
-  var emit = function emit(hook) {
-    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    if (hooks && hooks[hook]) {
-      hooks[hook].apply(hooks, args);
-    }
-  };
-
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-      if (isLocalhost()) {
-        // This is running on localhost. Lets check if a service worker still exists or not.
-        checkValidServiceWorker(swUrl, emit, registrationOptions);
-        navigator.serviceWorker.ready.then(function (registration) {
-          emit('ready', registration);
-        });
-      } else {
-        // Is not local host. Just register service worker
-        registerValidSW(swUrl, emit, registrationOptions);
-      }
-    });
-  }
-}
-
-function registerValidSW(swUrl, emit, registrationOptions) {
-  navigator.serviceWorker.register(swUrl, registrationOptions).then(function (registration) {
-    emit('registered', registration);
-    if (registration.waiting) {
-      emit('updated', registration);
-      return;
-    }
-    registration.onupdatefound = function () {
-      emit('updatefound', registration);
-      var installingWorker = registration.installing;
-      installingWorker.onstatechange = function () {
-        if (installingWorker.state === 'installed') {
-          if (navigator.serviceWorker.controller) {
-            // At this point, the old content will have been purged and
-            // the fresh content will have been added to the cache.
-            // It's the perfect time to display a "New content is
-            // available; please refresh." message in your web app.
-            emit('updated', registration);
-          } else {
-            // At this point, everything has been precached.
-            // It's the perfect time to display a
-            // "Content is cached for offline use." message.
-            emit('cached', registration);
-          }
-        }
-      };
-    };
-  }).catch(function (error) {
-    emit('error', error);
-  });
-}
-
-function checkValidServiceWorker(swUrl, emit, registrationOptions) {
-  // Check if the service worker can be found.
-  fetch(swUrl).then(function (response) {
-    // Ensure service worker exists, and that we really are getting a JS file.
-    if (response.status === 404) {
-      // No service worker found.
-      emit('error', new Error('Service worker not found at ' + swUrl));
-      unregister();
-    } else if (response.headers.get('content-type').indexOf('javascript') === -1) {
-      emit('error', new Error('Expected ' + swUrl + ' to have javascript content-type, ' + ('but received ' + response.headers.get('content-type'))));
-      unregister();
-    } else {
-      // Service worker found. Proceed as normal.
-      registerValidSW(swUrl, emit, registrationOptions);
-    }
-  }).catch(function (error) {
-    if (!navigator.onLine) {
-      emit('offline');
-    } else {
-      emit('error', error);
-    }
-  });
-}
-
-function unregister() {
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.ready.then(function (registration) {
-      registration.unregister();
-    });
-  }
-}
-
-register('/sw.js', {
-  registrationOptions: { scope: './' },
-  ready: function ready(registration) {
-    console.log('Service worker is active.');
-  },
-  registered: function registered(registration) {
-    console.log('Service worker has been registered.');
-  },
-  cached: function cached(registration) {
-    console.log('Content has been cached for offline use.');
-  },
-  updatefound: function updatefound(registration) {
-    console.log('New content is downloading.');
-  },
-  updated: function updated(registration) {
-    console.log('New content is available; please refresh.');
-  },
-  offline: function offline() {
-    console.log('No internet connection found. App is running in offline mode.');
-  },
-  error: function error(_error) {
-    console.error('Error during service worker registration:', _error);
-  }
-});
+// const isLocalhost = () => Boolean(
+//     window.location.hostname === 'localhost' ||
+//     // [::1] is the IPv6 localhost address.
+//     window.location.hostname === '[::1]' ||
+//     // 127.0.0.1/8 is considered localhost for IPv4.
+//     window.location.hostname.match(
+//         /^127(?:\.(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)){3}$/
+//     )
+// )
+//
+// function register (swUrl, hooks = {}) {
+//   const { registrationOptions = {}} = hooks
+//   delete hooks.registrationOptions
+//
+//   const emit = (hook, ...args) => {
+//     if (hooks && hooks[hook]) {
+//       hooks[hook](...args)
+//     }
+//   }
+//
+//   if ('serviceWorker' in navigator) {
+//     window.addEventListener('load', () => {
+//       if (isLocalhost()) {
+//         // This is running on localhost. Lets check if a service worker still exists or not.
+//         checkValidServiceWorker(swUrl, emit, registrationOptions)
+//         navigator.serviceWorker.ready.then(registration => {
+//           emit('ready', registration)
+//         })
+//       } else {
+//         // Is not local host. Just register service worker
+//         registerValidSW(swUrl, emit, registrationOptions)
+//       }
+//     })
+//   }
+// }
+//
+// function registerValidSW (swUrl, emit, registrationOptions) {
+//   navigator.serviceWorker
+//       .register(swUrl, registrationOptions)
+//       .then(registration => {
+//         emit('registered', registration)
+//         if (registration.waiting) {
+//           emit('updated', registration)
+//           return
+//         }
+//         registration.onupdatefound = () => {
+//           emit('updatefound', registration)
+//           const installingWorker = registration.installing
+//           installingWorker.onstatechange = () => {
+//             if (installingWorker.state === 'installed') {
+//               if (navigator.serviceWorker.controller) {
+//                 // At this point, the old content will have been purged and
+//                 // the fresh content will have been added to the cache.
+//                 // It's the perfect time to display a "New content is
+//                 // available; please refresh." message in your web app.
+//                 emit('updated', registration)
+//               } else {
+//                 // At this point, everything has been precached.
+//                 // It's the perfect time to display a
+//                 // "Content is cached for offline use." message.
+//                 emit('cached', registration)
+//               }
+//             }
+//           }
+//         }
+//       })
+//       .catch(error => {
+//         emit('error', error)
+//       })
+// }
+//
+// function checkValidServiceWorker (swUrl, emit, registrationOptions) {
+//   // Check if the service worker can be found.
+//   fetch(swUrl)
+//       .then(response => {
+//         // Ensure service worker exists, and that we really are getting a JS file.
+//         if (response.status === 404) {
+//           // No service worker found.
+//           emit('error', new Error(`Service worker not found at ${swUrl}`))
+//           unregister()
+//         } else if (response.headers.get('content-type').indexOf('javascript') === -1) {
+//           emit('error', new Error(
+//               `Expected ${swUrl} to have javascript content-type, ` +
+//               `but received ${response.headers.get('content-type')}`))
+//           unregister()
+//         } else {
+//           // Service worker found. Proceed as normal.
+//           registerValidSW(swUrl, emit, registrationOptions)
+//         }
+//       })
+//       .catch(error => {
+//         if (!navigator.onLine) {
+//           emit('offline')
+//         } else {
+//           emit('error', error)
+//         }
+//       })
+// }
+//
+// function unregister () {
+//   if ('serviceWorker' in navigator) {
+//     navigator.serviceWorker.ready.then(registration => {
+//       registration.unregister()
+//     })
+//   }
+// }
+//
+// register('/sw.js', {
+//   registrationOptions: { scope: './' },
+//   ready (registration) {
+//     console.log('Service worker is active.')
+//   },
+//   registered (registration) {
+//     console.log('Service worker has been registered.')
+//   },
+//   cached (registration) {
+//     console.log('Content has been cached for offline use.')
+//   },
+//   updatefound (registration) {
+//     console.log('New content is downloading.')
+//   },
+//   updated (registration) {
+//     console.log('New content is available; please refresh.')
+//   },
+//   offline () {
+//     console.log('No internet connection found. App is running in offline mode.')
+//   },
+//   error (error) {
+//     console.error('Error during service worker registration:', error)
+//   }
+// });
 //# sourceMappingURL=registerServiceWorker.js.map
