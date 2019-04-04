@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Thu Apr 04 2019 11:20:18 GMT+0100 (BST)
+ * updated: Thu Apr 04 2019 13:41:41 GMT+0100 (BST)
  *
  * Table of Contents
  *
@@ -680,7 +680,7 @@ Modules
 
 /* Module: S */
 .main_list {
-  padding: 0 10px 80px 10px;
+  padding: 10px 10px 80px 10px;
 }
 
 .main_list .articles_list {
@@ -1023,26 +1023,17 @@ header .menutrigger {
 
 /* Module: S */
 .sw_message {
-  padding: 10px 70px;
+  padding: 10px 70px 0px 70px;
+  display: none;
 }
 
 .sw_message--offline {
-  position: relative;
   padding: 15px 0 15px 30px;
+  margin: 0;
   font-size: 0.71429rem;
   font-weight: 600;
   line-height: 1rem;
-}
-
-.sw_message--offline:before {
-  position: absolute;
-  top: 15px;
-  left: 0px;
-  display: block;
-  content: " ";
-  width: 25px;
-  height: 25px;
-  background: url(mysource_files/offlineicon.svg) center center/contain no-repeat;
+  background: url(mysource_files/offlineicon.svg) left center no-repeat;
 }
 
 /* Module: S */

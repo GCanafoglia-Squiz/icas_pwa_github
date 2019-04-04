@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Thu Apr 04 2019 11:20:18 GMT+0100 (BST) - First revision
+ *     Thu Apr 04 2019 13:41:41 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -188,6 +188,15 @@ $(document).ready(function () {
   $('.menutrigger').on('click', function () {
     $('.slide_in_menu').toggleClass('slide_in_menu_open');
   });
+});
+window.addEventListener('offline', function (e) {
+  console.log('offline');
+  $('.sw_message').slideDown(500);
+});
+
+window.addEventListener('online', function (e) {
+  console.log('online');
+  $('.sw_message').slideUp(500);
 });
 // this part is in Matrix start
 // this part will be in the pain layout of the page

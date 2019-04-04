@@ -1,9 +1,7 @@
-"use strict";
+// importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.1.1/workbox-sw.js');
 
-importScripts('https://storage.googleapis.com/workbox-cdn/releases/4.1.1/workbox-sw.js');
-
-workbox.setConfig({ debug: true });
-workbox.core.setCacheNameDetails({ prefix: "ICAS-Statics" });
+// workbox.setConfig({ debug: true });
+// workbox.core.setCacheNameDetails({prefix: "ICAS-Statics"});
 
 // with callback example
 //
@@ -55,4 +53,5 @@ workbox.core.setCacheNameDetails({ prefix: "ICAS-Statics" });
 //   }
 //   //I can add here the single pages and a list generated from the "saved to record" to cache elements not yet seen.
 // ]);
+"use strict";
 //# sourceMappingURL=sw.js.map
