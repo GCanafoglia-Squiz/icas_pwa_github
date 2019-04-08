@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Thu Apr 04 2019 13:41:41 GMT+0100 (BST) - First revision
+ *     Mon Apr 08 2019 14:40:24 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -189,14 +189,23 @@ $(document).ready(function () {
     $('.slide_in_menu').toggleClass('slide_in_menu_open');
   });
 });
+$(document).ready(function () {
+  $('.articles_list--element .rmv_wrapper').on('click', function (e) {
+    e.preventDefault();
+    var $this = $(this);
+    var actualArticle = $this.attr('data-articleid');
+    console.log('actual article = ' + actualArticle);
+    // removeFromRecord(user, actualArticle, $this);
+  });
+});
 window.addEventListener('offline', function (e) {
-  console.log('offline');
-  $('.sw_message').slideDown(500);
+  $('.app_area').css('margin-top', '0');
+  $('.sw_message').css('opacity', '1');
 });
 
 window.addEventListener('online', function (e) {
-  console.log('online');
-  $('.sw_message').slideUp(500);
+  $('.app_area').css('margin-top', '-68px');
+  $('.sw_message').css('opacity', '0');
 });
 // this part is in Matrix start
 // this part will be in the pain layout of the page

@@ -23,8 +23,8 @@
 // );
 
 // workbox.routing.registerRoute(
-//     new RegExp('^https:\\/\\/app\\.icas\\.com\\/.(.(?!\\.js$|json$|css$|png$|gif$|jpg$|jpeg$|svg$))+$'),
-//     new workbox.strategies.StaleWhileRevalidate({
+//     new RegExp('^https:\\/\\/app\\.icas\\.com\\/.(.(?!\\.js$|json$|css$|png$|gif$|jpg$|jpeg$|svg$|ico$))+$'),
+//     new workbox.strategies.NetworkFirst({
 //       cacheName: 'ICAS-Dynamics',
 //     })
 // );
@@ -51,7 +51,55 @@
 //     "url": "/manifest.json",
 //     "revision": "%globals_asset_assetid:450699^as_asset:asset_updated^prepend:manifest^base64encode%"
 //   }
-//   //I can add here the single pages and a list generated from the "saved to record" to cache elements not yet seen.
+//
 // ]);
+
+//note
+// assets under precacheAndRoute are precached and can be accessed with a fallback. for example:
+//
+//EXAMPLE START
+//
+//this is the handler
+// const articleHandler = workbox.strategies.networkFirst({
+//   cacheName: 'articles-cache',
+//   plugins: [
+//     new workbox.expiration.Plugin({
+//       maxEntries: 50,
+//     })
+//   ]
+// });
+//
+//
+//this is the router: in this case we uase the previously create handler to manage the response.
+//if the asset cannot be accessed, the pages offline or 404 (previously added to precacheAndRoute)
+//will be accessed.
+// workbox.routing.registerRoute(/(.*)article(.*)\.html/, args => {
+//   return articleHandler.handle(args).then(response => {
+//     if (!response) {
+//       return caches.match('pages/offline.html');
+//     } else if (response.status === 404) {
+//       return caches.match('pages/404.html');
+//     }
+//     return response;
+//   });
+// });
+//
+// EXAMPLE END
+
+
+//I can also try to load some pages that have non yet been seen
+//google example code at https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#network-falling-back-to-cache
+//
+// self.addEventListener('fetch', function(event) {
+//   event.respondWith(
+//       fetch(event.request).catch(function() {
+//         return caches.match(event.request);
+//       })
+//   );
+// });
+//
+//
+// or even better this: investigate please
+// https://developers.google.com/web/fundamentals/instant-and-offline/offline-cookbook/#cache-then-network
 "use strict";
 //# sourceMappingURL=sw.js.map
