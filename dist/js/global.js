@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Mon Apr 08 2019 14:40:24 GMT+0100 (BST) - First revision
+ *     Mon Apr 08 2019 16:32:56 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -48,17 +48,12 @@ $(document).ready(function () {
 
     $('.socialicons .button').on('click', function (e) {
       e.preventDefault();
-      console.log('click');
       var $this = $(this);
       if ($this.hasClass('active')) {
-        console.log('active');
         var actualArticle = $this.attr('data-articleid');
-        console.log('actual article = ' + actualArticle);
         removeFromRecord(user, actualArticle, $this);
       } else {
-        console.log('not active');
         var _actualArticle = $this.attr('data-articleid') + ';';
-        console.log('actual article = ' + _actualArticle);
         addToRecord(user, _actualArticle, $this);
       }
     });
@@ -195,9 +190,68 @@ $(document).ready(function () {
     var $this = $(this);
     var actualArticle = $this.attr('data-articleid');
     console.log('actual article = ' + actualArticle);
-    // removeFromRecord(user, actualArticle, $this);
+    var button = $this.parents('li');
+    console.log('actual button = ');
+    console.log(button);
+    removeButton(user, actualArticle, button);
   });
 });
+
+function removeButton(assetId, articleId, button) {
+  var actualArticlesString = void 0;
+  js_api.acquireLock({
+    "asset_id": assetId,
+    "dependants_only": 0,
+    "force_acquire": true,
+    "dataCallback": remArticleMetadata
+  });
+  function remArticleMetadata(object) {
+    console.log('remove metadata. object:');
+    console.log(object);
+    if (object[0]["warning"] || object["errorCode"] == "permissionError") {
+      console.log('An error has occurred, maybe you are offline. please try again later.');
+    } else {
+      js_api.getMetadata({
+        "asset_id": assetId,
+        "dataCallback": storeToArrayToRemove
+      });
+    }
+  }
+  function storeToArrayToRemove(object) {
+    $('.record_list').attr('data-articlelist', object["Saved.Record"]);
+    actualArticles = object["Saved.Record"].split(';');
+    if (actualArticles.indexOf(articleId) != -1) {
+      console.log('is in');
+      for (var i in actualArticles) {
+        if (actualArticles[i] == articleId) {
+          actualArticles.splice(i, 1);
+          break;
+        }
+      }
+      actualArticlesString = actualArticles.join(';');
+      js_api.setMetadata({
+        "asset_id": assetId,
+        "field_id": 451003,
+        "field_val": actualArticlesString,
+        "dataCallback": function dataCallback() {
+          releaseLockListArticle(assetId);
+        }
+      });
+    }
+  }
+  function releaseLockListArticle(assetId) {
+    js_api.releaseLock({
+      "asset_id": assetId,
+      "dataCallback": function dataCallback() {
+        setNonActive(button);
+      }
+    });
+  }
+  function setNonActive(button) {
+    $('.record_list').attr('data-articlelist', actualArticlesString);
+    button.remove();
+  }
+}
 window.addEventListener('offline', function (e) {
   $('.app_area').css('margin-top', '0');
   $('.sw_message').css('opacity', '1');
