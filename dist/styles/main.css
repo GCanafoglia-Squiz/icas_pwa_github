@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Mon Apr 08 2019 16:32:56 GMT+0100 (BST)
+ * updated: Tue Apr 09 2019 11:25:34 GMT+0100 (BST)
  *
  * Table of Contents
  *
@@ -604,6 +604,33 @@ Modules
   right: 0px;
 }
 
+.main_article .button {
+  font-size: 0.71429rem;
+  line-height: 1.42857rem;
+  padding: 0.6em 1.6em;
+  min-width: 156px;
+  text-align: center;
+  background-color: #575656;
+}
+
+@media screen and (min-width: 321px) {
+  .main_article .button {
+    font-size: 0.85714rem;
+    line-height: 1.14286rem;
+    min-width: 178px;
+  }
+}
+
+.main_article .button:focus, .main_article .button:hover {
+  background-color: #575656;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.main_article .button a {
+  color: #ffffff;
+}
+
 .main_article .socialicons {
   margin-bottom: 14px;
 }
@@ -611,6 +638,9 @@ Modules
 .main_article .socialicons .button {
   font-size: 0.71429rem;
   line-height: 1.42857rem;
+  padding: 0.6em 1.6em;
+  min-width: 156px;
+  text-align: center;
   background-color: #575656;
   height: 30px;
   margin: 0;
@@ -620,6 +650,7 @@ Modules
   .main_article .socialicons .button {
     font-size: 0.85714rem;
     line-height: 1.14286rem;
+    min-width: 178px;
   }
 }
 
@@ -641,7 +672,7 @@ Modules
   position: absolute;
   width: 5px;
   height: 10px;
-  left: 14px;
+  left: 10px;
   top: 8px;
   transform: rotate(45deg);
   border-style: solid;
@@ -823,6 +854,125 @@ Modules
   top: calc(50% - 18px);
   left: calc(50% - 13px);
   background: url(mysource_files/playbutton.svg) center center/contain no-repeat;
+}
+
+/* Module: S */
+.connect_list {
+  transition: all 0.5s ease-in-out;
+  margin-top: -68px;
+  padding: 80px 10px 80px 10px;
+  background-color: #f1f3f2;
+}
+
+.connect_list .articles_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.connect_list .articles_list--element, .connect_list .main_list .articles_list--element-video, .main_list .connect_list .articles_list--element-video, .connect_list .main_list .articles_list--element-featured, .main_list .connect_list .articles_list--element-featured {
+  display: flex;
+  -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  height: 100px;
+  overflow: hidden;
+  margin: 10px 15px;
+  padding: 5px 5px 5px 24%;
+  background-position: 10% center;
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+}
+
+.connect_list .articles_list--element a, .connect_list .main_list .articles_list--element-video a, .main_list .connect_list .articles_list--element-video a, .connect_list .main_list .articles_list--element-featured a, .main_list .connect_list .articles_list--element-featured a {
+  margin: auto;
+  margin-left: 5px;
+  text-align: center;
+  color: #ffffff;
+  text-decoration: none;
+  vertical-align: middle;
+}
+
+.connect_list .articles_list--element.linkedin, .connect_list .main_list .linkedin.articles_list--element-video, .main_list .connect_list .linkedin.articles_list--element-video, .connect_list .main_list .linkedin.articles_list--element-featured, .main_list .connect_list .linkedin.articles_list--element-featured {
+  background-color: #007BB5;
+  background-image: url(mysource_files/linkedin-icon.svg);
+}
+
+.connect_list .articles_list--element.twitter, .connect_list .main_list .twitter.articles_list--element-video, .main_list .connect_list .twitter.articles_list--element-video, .connect_list .main_list .twitter.articles_list--element-featured, .main_list .connect_list .twitter.articles_list--element-featured {
+  background-color: #1DA1F2;
+  background-image: url(mysource_files/twitter-icon.svg);
+  margin-top: 50px;
+}
+
+/* Module: S */
+.event_list {
+  transition: all 0.5s ease-in-out;
+  margin-top: -68px;
+  padding: 10px 10px 80px 10px;
+}
+
+.event_list .articles_list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.event_list .articles_list--element, .event_list .main_list .articles_list--element-video, .main_list .event_list .articles_list--element-video, .event_list .main_list .articles_list--element-featured, .main_list .event_list .articles_list--element-featured {
+  clear: both;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  height: 100px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.event_list .articles_list--element .img_wrapper, .event_list .main_list .articles_list--element-video .img_wrapper, .main_list .event_list .articles_list--element-video .img_wrapper, .event_list .main_list .articles_list--element-featured .img_wrapper, .main_list .event_list .articles_list--element-featured .img_wrapper {
+  background: url(mysource_files/img_wrapper.png) center center/cover no-repeat;
+  position: relative;
+  padding-bottom: 100px;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 0;
+  width: 100px;
+  float: left;
+}
+
+.event_list .articles_list--element .img_wrapper .image, .event_list .main_list .articles_list--element-video .img_wrapper .image, .main_list .event_list .articles_list--element-video .img_wrapper .image, .event_list .main_list .articles_list--element-featured .img_wrapper .image, .main_list .event_list .articles_list--element-featured .img_wrapper .image {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+
+.event_list .articles_list--element .content_wrapper, .event_list .main_list .articles_list--element-video .content_wrapper, .main_list .event_list .articles_list--element-video .content_wrapper, .event_list .main_list .articles_list--element-featured .content_wrapper, .main_list .event_list .articles_list--element-featured .content_wrapper {
+  position: relative;
+  float: left;
+  width: calc(100% - 100px);
+  height: 100px;
+  padding: 8px 10px;
+}
+
+.event_list .articles_list--element .content_wrapper h3, .event_list .main_list .articles_list--element-video .content_wrapper h3, .main_list .event_list .articles_list--element-video .content_wrapper h3, .event_list .main_list .articles_list--element-featured .content_wrapper h3, .main_list .event_list .articles_list--element-featured .content_wrapper h3 {
+  color: black;
+  margin: 2px 0px;
+  font-size: 1.28571rem;
+  font-weight: 400;
+}
+
+.event_list .articles_list--element .content_wrapper .details, .event_list .main_list .articles_list--element-video .content_wrapper .details, .main_list .event_list .articles_list--element-video .content_wrapper .details, .event_list .main_list .articles_list--element-featured .content_wrapper .details, .main_list .event_list .articles_list--element-featured .content_wrapper .details {
+  margin: 0px;
+  font-size: 0.71429rem;
+  color: #575656;
+  position: absolute;
+  bottom: 5px;
+  left: 10px;
+  line-height: 14px;
 }
 
 /* Module: S */
@@ -1077,6 +1227,10 @@ header .menutrigger {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.record_list .articles_list .nosave {
+  text-align: center;
 }
 
 .record_list .articles_list--element, .record_list .main_list .articles_list--element-video, .main_list .record_list .articles_list--element-video, .record_list .main_list .articles_list--element-featured, .main_list .record_list .articles_list--element-featured {

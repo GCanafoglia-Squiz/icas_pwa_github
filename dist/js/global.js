@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Mon Apr 08 2019 16:32:56 GMT+0100 (BST) - First revision
+ *     Tue Apr 09 2019 11:25:34 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -112,7 +112,7 @@ function removeFromRecord(assetId, articleId, button) {
   }
   function setNonActive(button) {
     $('.main_article').attr('data-articlelist', actualArticlesString);
-    button.removeClass('active');
+    button.removeClass('active').html('Add to Learning Record');
   }
 }
 
@@ -153,7 +153,7 @@ function addToRecord(assetId, articleId, button) {
     });
   }
   function setActive(button) {
-    button.addClass('active');
+    button.addClass('active').html('Added to Learning Record');
   }
 }
 
@@ -173,7 +173,7 @@ function getArticles(assetId) {
         var $this = $(this);
         var articleid = $this.attr('data-articleid').toString();
         if (actualArticles.indexOf(articleid) != -1) {
-          $this.addClass('active');
+          $this.addClass('active').html('Added to Learning Record');
         }
       });
     }
