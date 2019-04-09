@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Tue Apr 09 2019 11:25:34 GMT+0100 (BST)
+ * updated: Tue Apr 09 2019 16:06:07 GMT+0100 (BST)
  *
  * Table of Contents
  *
@@ -518,6 +518,11 @@ Modules
 --------------------
 */
 /* Module: S */
+.articlewrapper, .eventwrapper {
+  margin-top: -68px;
+  transition: all 0.5s ease-in-out;
+}
+
 .back_arrow {
   margin: 13px 0px 0px 35px;
   background-color: #ffffff;
