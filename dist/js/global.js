@@ -218,11 +218,45 @@ $(document).ready(function () {
     $('.ios_overlay').on('click', function (e) {
       e.preventDefault();
       var $this = $(this);
-      $this.css({ 'visibility': 'hidden', 'opacity': '0' });
+      setIos(user, $this);
+      // $this.css({'visibility': 'hidden', 'opacity': '0'});
     });
   }
 });
 
+function setIos(assetId, overlay) {
+  js_api.acquireLock({
+    "asset_id": assetId,
+    "dependants_only": 0,
+    "force_acquire": true,
+    "dataCallback": setAssetMetadata
+  });
+  function setAssetMetadata(object) {
+    console.log('seta metadata. object:');
+    console.log(object);
+    if (object[0]["warning"] || object["errorCode"] == "permissionError") {
+      console.log('An error has occurred, maybe you are offline. please try again later.');
+    } else {
+      js_api.setMetadata({
+        "asset_id": assetId,
+        "field_id": 453599,
+        "field_val": no,
+        "dataCallback": function dataCallback() {
+          releaseLock(assetId);
+        }
+      });
+    }
+  }
+  function releaseLock(assetId) {
+    js_api.releaseLock({
+      "asset_id": assetId,
+      "dataCallback": removeOverlay
+    });
+  }
+  function removeOverlay() {
+    overlay.css({ 'visibility': 'hidden', 'opacity': '0' });
+  }
+}
 $(document).ready(function () {
   $('.articles_list--element .rmv_wrapper').on('click', function (e) {
     e.preventDefault();
