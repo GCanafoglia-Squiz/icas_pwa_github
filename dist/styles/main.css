@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Tue Apr 09 2019 16:06:07 GMT+0100 (BST)
+ * updated: Wed Apr 10 2019 14:04:44 GMT+0100 (BST)
  *
  * Table of Contents
  *
@@ -484,6 +484,7 @@ body .page-wrapper {
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+  position: relative;
 }
 
 body.gray {
@@ -1030,6 +1031,61 @@ header .toplogo span {
 header .menutrigger {
   font-size: 1.42857rem;
   padding: 12px 5px 5px 15px;
+}
+
+/* Module: S */
+.ios_overlay {
+  transition: all 0.5s ease-in-out;
+  position: fixed;
+  display: flex;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #f1f3f2;
+  z-index: 100;
+  visibility: hidden;
+  opacity: 0;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.ios_overlay-content {
+  margin: 30px;
+  background: #ffffff;
+  text-align: center;
+  -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
+  line-height: 20px;
+  font-size: 0.85714rem;
+  line-height: 1.42857rem;
+}
+
+@media screen and (min-width: 321px) {
+  .ios_overlay-content {
+    font-size: 1rem;
+  }
+}
+
+.ios_overlay-content .content_top {
+  padding: 155px 30px 50px 30px;
+  background-image: url(mysource_files/icas_logo.gif);
+  background-repeat: no-repeat;
+  background-position: center 50px;
+  background-size: 197px 57px;
+}
+
+@media screen and (min-width: 321px) {
+  .ios_overlay-content .content_top {
+    padding: 155px 50px 50px 50px;
+  }
+}
+
+.ios_overlay-content .content_bottom {
+  background-color: #f1f3f2;
+  padding: 18px 10px;
 }
 
 /* Module: S */

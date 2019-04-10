@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Tue Apr 09 2019 16:06:07 GMT+0100 (BST) - First revision
+ *     Wed Apr 10 2019 14:04:44 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -184,6 +184,45 @@ $(document).ready(function () {
     $('.slide_in_menu').toggleClass('slide_in_menu_open');
   });
 });
+// var isMobile = {
+//   Android: function() {
+//     return navigator.userAgent.match(/Android/i);
+//   },
+//   BlackBerry: function() {
+//     return navigator.userAgent.match(/BlackBerry/i);
+//   },
+//   iOS: function() {
+//     return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+//   },
+//   Opera: function() {
+//     return navigator.userAgent.match(/Opera Mini/i);
+//   },
+//   Windows: function() {
+//     return navigator.userAgent.match(/IEMobile/i);
+//   },
+//   any: function() {
+//     return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
+//   }
+// };
+var isMobile = {
+  iOS: function iOS() {
+    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
+  }
+};
+
+$(document).ready(function () {
+  if ($('.ios_overlay').length > 0) {
+    if (isMobile.iOS()) {
+      $('.ios_overlay').css({ 'visibility': 'visible', 'opacity': '1' });
+    }
+    $('.ios_overlay').on('click', function (e) {
+      e.preventDefault();
+      var $this = $(this);
+      $this.css({ 'visibility': 'hidden', 'opacity': '0' });
+    });
+  }
+});
+
 $(document).ready(function () {
   $('.articles_list--element .rmv_wrapper').on('click', function (e) {
     e.preventDefault();
