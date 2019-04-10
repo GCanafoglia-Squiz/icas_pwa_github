@@ -240,7 +240,7 @@ function setIos(assetId, overlay) {
       js_api.setMetadata({
         "asset_id": assetId,
         "field_id": 453599,
-        "field_val": no,
+        "field_val": "no",
         "dataCallback": function dataCallback() {
           releaseLock(assetId);
         }
