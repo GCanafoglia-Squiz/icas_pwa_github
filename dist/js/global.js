@@ -340,22 +340,32 @@ function removeButton(assetId, articleId, button) {
 window.addEventListener('offline', function (e) {
   $('.app_area').css('margin-top', '0');
   $('.sw_message').css('opacity', '1');
-});
+}, false);
 
 window.addEventListener('online', function (e) {
   $('.app_area').css('margin-top', '-68px');
   $('.sw_message').css('opacity', '0');
-});
+}, false);
 
-$(document).ready(function () {
+window.addEventListener('load', function (e) {
   if (navigator.onLine) {
-    $('.app_area').css('margin-top', '-68px');
-    $('.sw_message').css('opacity', '0');
+    document.getElementsByClassName('app_area').style.marginTop = "-68px";
+    document.getElementsByClassName('sw_message').style.opacity = "0";
   } else {
-    $('.app_area').css('margin-top', '0');
-    $('.sw_message').css('opacity', '1');
+    document.getElementsByClassName('app_area').style.marginTop = "0";
+    document.getElementsByClassName('sw_message').style.opacity = "1";
   }
-});
+}, false);
+
+// $(document).ready(function(){
+//   if (navigator.onLine) {
+//     $('.app_area').css('margin-top','-68px');
+//     $('.sw_message').css('opacity','0');
+//   } else {
+//     $('.app_area').css('margin-top','0');
+//     $('.sw_message').css('opacity','1');
+//   }
+// });
 // this part is in Matrix start
 // this part will be in the pain layout of the page
 //
