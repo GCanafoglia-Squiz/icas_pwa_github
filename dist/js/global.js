@@ -311,21 +311,21 @@ function removeButton(assetId, articleId, button) {
   }
 }
 window.addEventListener('offline', function (e) {
-  $('.app_area').css('margin-top', '0');
+  $('.app_area').css('margin-top', '68px');
   $('.sw_message').css('opacity', '1');
 }, false);
 
 window.addEventListener('online', function (e) {
-  $('.app_area').css('margin-top', '-68px');
+  $('.app_area').css('margin-top', '0');
   $('.sw_message').css('opacity', '0');
 }, false);
 
 window.addEventListener('load', function (e) {
   if (navigator.onLine) {
-    document.getElementsByClassName('app_area')[0].style.marginTop = "-68px";
+    document.getElementsByClassName('app_area')[0].style.marginTop = "0";
     document.getElementsByClassName('sw_message')[0].style.opacity = "0";
   } else {
-    document.getElementsByClassName('app_area')[0].style.marginTop = "0";
+    document.getElementsByClassName('app_area')[0].style.marginTop = "68px";
     document.getElementsByClassName('sw_message')[0].style.opacity = "1";
   }
 }, false);

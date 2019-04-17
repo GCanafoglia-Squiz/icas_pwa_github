@@ -491,6 +491,10 @@ body.gray {
   background-color: #f1f3f2;
 }
 
+main {
+  position: relative;
+}
+
 .button {
   background-color: #006EB6;
   -webkit-border-radius: 5px;
@@ -520,7 +524,6 @@ Modules
 */
 /* Module: S */
 .articlewrapper, .eventwrapper {
-  margin-top: -68px;
   transition: all 0.5s ease-in-out;
 }
 
@@ -718,7 +721,6 @@ Modules
 /* Module: S */
 .main_list {
   transition: all 0.5s ease-in-out;
-  margin-top: -68px;
   padding: 10px 10px 80px 10px;
 }
 
@@ -865,9 +867,7 @@ Modules
 /* Module: S */
 .connect_list {
   transition: all 0.5s ease-in-out;
-  margin-top: -68px;
-  padding: 80px 10px 80px 10px;
-  background-color: #f1f3f2;
+  padding: 10px 10px 80px 10px;
 }
 
 .connect_list .articles_list {
@@ -888,6 +888,10 @@ Modules
   background-position: 10% center;
   background-size: 30px 30px;
   background-repeat: no-repeat;
+}
+
+.connect_list .articles_list--element:first-child, .connect_list .main_list .articles_list--element-video:first-child, .main_list .connect_list .articles_list--element-video:first-child, .connect_list .main_list .articles_list--element-featured:first-child, .main_list .connect_list .articles_list--element-featured:first-child, .connect_list .event_list .articles_list--element-featured:first-child, .event_list .connect_list .articles_list--element-featured:first-child {
+  margin-top: 80px;
 }
 
 .connect_list .articles_list--element a, .connect_list .main_list .articles_list--element-video a, .main_list .connect_list .articles_list--element-video a, .connect_list .main_list .articles_list--element-featured a, .main_list .connect_list .articles_list--element-featured a, .connect_list .event_list .articles_list--element-featured a, .event_list .connect_list .articles_list--element-featured a {
@@ -934,7 +938,6 @@ Modules
 /* Module: S */
 .event_list {
   transition: all 0.5s ease-in-out;
-  margin-top: -68px;
   padding: 10px 10px 80px 10px;
 }
 
@@ -1148,7 +1151,6 @@ header .menutrigger {
 /* Module: S */
 .learning_list {
   transition: all 0.5s ease-in-out;
-  margin-top: -68px;
   padding: 10px 10px 80px 10px;
 }
 
@@ -1252,12 +1254,15 @@ header .menutrigger {
 .login {
   width: 100%;
   text-align: center;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-35%);
+  position: relative;
+  transform: translateY(40%);
   transition: all 0.5s ease-in-out;
-  margin-top: -68px;
-  padding: 10px 10px 80px 10px;
+}
+
+@media screen and (min-width: 321px) {
+  .login {
+    transform: translateY(50%);
+  }
 }
 
 .logo {
@@ -1340,7 +1345,6 @@ header .menutrigger {
 /* Module: S */
 .record_list {
   transition: all 0.5s ease-in-out;
-  margin-top: -68px;
   padding: 10px 10px 80px 10px;
 }
 
@@ -1482,7 +1486,8 @@ header .menutrigger {
 .sw_message {
   opacity: 0;
   transition: all 0.5s ease-in-out;
-  position: relative;
+  position: absolute;
+  top: -68px;
   z-index: -1;
   padding: 10px 50px 0px 50px;
   min-height: 68px;
@@ -1510,6 +1515,7 @@ header .menutrigger {
   width: 100%;
   text-align: center;
   padding: 0 15px;
+  transition: all 0.5s ease-in-out;
 }
 
 .topics h1 {
