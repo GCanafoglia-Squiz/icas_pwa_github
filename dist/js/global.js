@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Wed Apr 17 2019 15:13:29 GMT+0100 (BST) - First revision
+ *     Wed Apr 17 2019 16:29:10 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -49,10 +49,9 @@ $(document).ready(function () {
     }
 
     $('.socialicons .button').on('click', function (e) {
+      e.preventDefault();
+      var $this = $(this);
       if (navigator.onLine) {
-        console.log('online ' + navigator.onLine);
-        e.preventDefault();
-        var $this = $(this);
         if ($this.hasClass('active')) {
           var actualArticle = $this.attr('data-articleid');
           removeFromRecord(user, actualArticle, $this);
@@ -64,8 +63,8 @@ $(document).ready(function () {
     });
   }
 });
-// remove articleId from metadata
 
+// remove articleId from metadata
 function removeFromRecord(assetId, articleId, button) {
   var actualArticlesString = void 0;
   js_api.acquireLock({
@@ -76,8 +75,6 @@ function removeFromRecord(assetId, articleId, button) {
   });
 
   function remArticleMetadata(object) {
-    console.log('remove metadata. object:');
-    console.log(object);
     if (object[0]["warning"] || object["errorCode"] == "permissionError") {
       console.log('An error has occurred, maybe you are offline. please try again later.');
     } else {
@@ -92,7 +89,6 @@ function removeFromRecord(assetId, articleId, button) {
     $('.main_article').attr('data-articlelist', object["Saved.Record"]);
     actualArticles = object["Saved.Record"].split(';');
     if (actualArticles.indexOf(articleId) != -1) {
-      console.log('is in');
       for (var i in actualArticles) {
         if (actualArticles[i] == articleId) {
           actualArticles.splice(i, 1);
@@ -136,15 +132,12 @@ function addToRecord(assetId, articleId, button) {
   });
 
   function setArticleMetadata(object) {
-    console.log('seta metadata. object:');
-    console.log(object);
     if (object[0]["warning"] || object["errorCode"] == "permissionError") {
       console.log('An error has occurred, maybe you are offline. please try again later.');
     } else {
       var alreadysaved = $('.main_article').attr('data-articlelist');
       toSaveArticles = alreadysaved + articleId;
       $('.main_article').attr('data-articlelist', toSaveArticles);
-      console.log(toSaveArticles);
       js_api.setMetadata({
         "asset_id": assetId,
         "field_id": 451003,
@@ -196,26 +189,6 @@ $(document).ready(function () {
     $('.slide_in_menu').toggleClass('slide_in_menu_open');
   });
 });
-// var isMobile = {
-//   Android: function() {
-//     return navigator.userAgent.match(/Android/i);
-//   },
-//   BlackBerry: function() {
-//     return navigator.userAgent.match(/BlackBerry/i);
-//   },
-//   iOS: function() {
-//     return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-//   },
-//   Opera: function() {
-//     return navigator.userAgent.match(/Opera Mini/i);
-//   },
-//   Windows: function() {
-//     return navigator.userAgent.match(/IEMobile/i);
-//   },
-//   any: function() {
-//     return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-//   }
-// };
 var isMobile = {
   iOS: function iOS() {
     return navigator.userAgent.match(/iPhone|iPad|iPod/i);
@@ -230,8 +203,11 @@ $(document).ready(function () {
     $('.ios_overlay').on('click', function (e) {
       e.preventDefault();
       var $this = $(this);
-      setIos(user, $this);
-      // $this.css({'visibility': 'hidden', 'opacity': '0'});
+      if (navigator.onLine) {
+        setIos(user, $this);
+      } else {
+        $this.css({ 'visibility': 'hidden', 'opacity': '0' });
+      }
     });
   }
 });
@@ -243,9 +219,8 @@ function setIos(assetId, overlay) {
     "force_acquire": true,
     "dataCallback": setAssetMetadata
   });
+
   function setAssetMetadata(object) {
-    console.log('seta metadata. object:');
-    console.log(object);
     if (object[0]["warning"] || object["errorCode"] == "permissionError") {
       console.log('An error has occurred, maybe you are offline. please try again later.');
     } else {
@@ -259,12 +234,14 @@ function setIos(assetId, overlay) {
       });
     }
   }
+
   function releaseLock(assetId) {
     js_api.releaseLock({
       "asset_id": assetId,
       "dataCallback": removeOverlay
     });
   }
+
   function removeOverlay() {
     overlay.css({ 'visibility': 'hidden', 'opacity': '0' });
   }
@@ -274,11 +251,10 @@ $(document).ready(function () {
     e.preventDefault();
     var $this = $(this);
     var actualArticle = $this.attr('data-articleid');
-    console.log('actual article = ' + actualArticle);
     var button = $this.parents('li');
-    console.log('actual button = ');
-    console.log(button);
-    removeButton(user, actualArticle, button);
+    if (navigator.onLine) {
+      removeButton(user, actualArticle, button);
+    }
   });
 });
 
@@ -291,8 +267,6 @@ function removeButton(assetId, articleId, button) {
     "dataCallback": remArticleMetadata
   });
   function remArticleMetadata(object) {
-    console.log('remove metadata. object:');
-    console.log(object);
     if (object[0]["warning"] || object["errorCode"] == "permissionError") {
       console.log('An error has occurred, maybe you are offline. please try again later.');
     } else {
@@ -306,7 +280,6 @@ function removeButton(assetId, articleId, button) {
     $('.record_list').attr('data-articlelist', object["Saved.Record"]);
     actualArticles = object["Saved.Record"].split(';');
     if (actualArticles.indexOf(articleId) != -1) {
-      console.log('is in');
       for (var i in actualArticles) {
         if (actualArticles[i] == articleId) {
           actualArticles.splice(i, 1);
@@ -349,11 +322,11 @@ window.addEventListener('online', function (e) {
 
 window.addEventListener('load', function (e) {
   if (navigator.onLine) {
-    document.getElementsByClassName('app_area').style.marginTop = "-68px";
-    document.getElementsByClassName('sw_message').style.opacity = "0";
+    document.getElementsByClassName('app_area')[0].style.marginTop = "-68px";
+    document.getElementsByClassName('sw_message')[0].style.opacity = "0";
   } else {
-    document.getElementsByClassName('app_area').style.marginTop = "0";
-    document.getElementsByClassName('sw_message').style.opacity = "1";
+    document.getElementsByClassName('app_area')[0].style.marginTop = "0";
+    document.getElementsByClassName('sw_message')[0].style.opacity = "1";
   }
 }, false);
 // this part is in Matrix start
