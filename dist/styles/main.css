@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Wed Apr 10 2019 14:04:44 GMT+0100 (BST)
+ * updated: Wed Apr 17 2019 11:20:14 GMT+0100 (BST)
  *
  * Table of Contents
  *
@@ -876,7 +876,7 @@ Modules
   padding: 0;
 }
 
-.connect_list .articles_list--element, .connect_list .main_list .articles_list--element-video, .main_list .connect_list .articles_list--element-video, .connect_list .main_list .articles_list--element-featured, .main_list .connect_list .articles_list--element-featured {
+.connect_list .articles_list--element, .connect_list .main_list .articles_list--element-video, .main_list .connect_list .articles_list--element-video, .connect_list .main_list .articles_list--element-featured, .main_list .connect_list .articles_list--element-featured, .connect_list .event_list .articles_list--element-featured, .event_list .connect_list .articles_list--element-featured {
   display: flex;
   -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
@@ -890,7 +890,7 @@ Modules
   background-repeat: no-repeat;
 }
 
-.connect_list .articles_list--element a, .connect_list .main_list .articles_list--element-video a, .main_list .connect_list .articles_list--element-video a, .connect_list .main_list .articles_list--element-featured a, .main_list .connect_list .articles_list--element-featured a {
+.connect_list .articles_list--element a, .connect_list .main_list .articles_list--element-video a, .main_list .connect_list .articles_list--element-video a, .connect_list .main_list .articles_list--element-featured a, .main_list .connect_list .articles_list--element-featured a, .connect_list .event_list .articles_list--element-featured a, .event_list .connect_list .articles_list--element-featured a {
   margin: auto;
   margin-left: 5px;
   text-align: center;
@@ -899,12 +899,12 @@ Modules
   vertical-align: middle;
 }
 
-.connect_list .articles_list--element.linkedin, .connect_list .main_list .linkedin.articles_list--element-video, .main_list .connect_list .linkedin.articles_list--element-video, .connect_list .main_list .linkedin.articles_list--element-featured, .main_list .connect_list .linkedin.articles_list--element-featured {
+.connect_list .articles_list--element.linkedin, .connect_list .main_list .linkedin.articles_list--element-video, .main_list .connect_list .linkedin.articles_list--element-video, .connect_list .main_list .linkedin.articles_list--element-featured, .main_list .connect_list .linkedin.articles_list--element-featured, .connect_list .event_list .linkedin.articles_list--element-featured, .event_list .connect_list .linkedin.articles_list--element-featured {
   background-color: #007BB5;
   background-image: url(mysource_files/linkedin-icon.svg);
 }
 
-.connect_list .articles_list--element.twitter, .connect_list .main_list .twitter.articles_list--element-video, .main_list .connect_list .twitter.articles_list--element-video, .connect_list .main_list .twitter.articles_list--element-featured, .main_list .connect_list .twitter.articles_list--element-featured {
+.connect_list .articles_list--element.twitter, .connect_list .main_list .twitter.articles_list--element-video, .main_list .connect_list .twitter.articles_list--element-video, .connect_list .main_list .twitter.articles_list--element-featured, .main_list .connect_list .twitter.articles_list--element-featured, .connect_list .event_list .twitter.articles_list--element-featured, .event_list .connect_list .twitter.articles_list--element-featured {
   background-color: #1DA1F2;
   background-image: url(mysource_files/twitter-icon.svg);
   margin-top: 50px;
@@ -923,7 +923,7 @@ Modules
   padding: 0;
 }
 
-.event_list .articles_list--element, .event_list .main_list .articles_list--element-video, .main_list .event_list .articles_list--element-video, .event_list .main_list .articles_list--element-featured, .main_list .event_list .articles_list--element-featured {
+.event_list .articles_list--element, .event_list .main_list .articles_list--element-video, .main_list .event_list .articles_list--element-video, .event_list .articles_list--element-featured {
   clear: both;
   background-color: #ffffff;
   -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
@@ -934,7 +934,7 @@ Modules
   margin-bottom: 10px;
 }
 
-.event_list .articles_list--element .img_wrapper, .event_list .main_list .articles_list--element-video .img_wrapper, .main_list .event_list .articles_list--element-video .img_wrapper, .event_list .main_list .articles_list--element-featured .img_wrapper, .main_list .event_list .articles_list--element-featured .img_wrapper {
+.event_list .articles_list--element .img_wrapper, .event_list .main_list .articles_list--element-video .img_wrapper, .main_list .event_list .articles_list--element-video .img_wrapper, .event_list .articles_list--element-featured .img_wrapper {
   background: url(mysource_files/img_wrapper.png) center center/cover no-repeat;
   position: relative;
   padding-bottom: 100px;
@@ -945,7 +945,7 @@ Modules
   float: left;
 }
 
-.event_list .articles_list--element .img_wrapper .image, .event_list .main_list .articles_list--element-video .img_wrapper .image, .main_list .event_list .articles_list--element-video .img_wrapper .image, .event_list .main_list .articles_list--element-featured .img_wrapper .image, .main_list .event_list .articles_list--element-featured .img_wrapper .image {
+.event_list .articles_list--element .img_wrapper .image, .event_list .main_list .articles_list--element-video .img_wrapper .image, .main_list .event_list .articles_list--element-video .img_wrapper .image, .event_list .articles_list--element-featured .img_wrapper .image {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -956,7 +956,7 @@ Modules
   right: 0px;
 }
 
-.event_list .articles_list--element .content_wrapper, .event_list .main_list .articles_list--element-video .content_wrapper, .main_list .event_list .articles_list--element-video .content_wrapper, .event_list .main_list .articles_list--element-featured .content_wrapper, .main_list .event_list .articles_list--element-featured .content_wrapper {
+.event_list .articles_list--element .content_wrapper, .event_list .main_list .articles_list--element-video .content_wrapper, .main_list .event_list .articles_list--element-video .content_wrapper, .event_list .articles_list--element-featured .content_wrapper {
   position: relative;
   float: left;
   width: calc(100% - 100px);
@@ -964,14 +964,14 @@ Modules
   padding: 8px 10px;
 }
 
-.event_list .articles_list--element .content_wrapper h3, .event_list .main_list .articles_list--element-video .content_wrapper h3, .main_list .event_list .articles_list--element-video .content_wrapper h3, .event_list .main_list .articles_list--element-featured .content_wrapper h3, .main_list .event_list .articles_list--element-featured .content_wrapper h3 {
+.event_list .articles_list--element .content_wrapper h3, .event_list .main_list .articles_list--element-video .content_wrapper h3, .main_list .event_list .articles_list--element-video .content_wrapper h3, .event_list .articles_list--element-featured .content_wrapper h3 {
   color: black;
   margin: 2px 0px;
   font-size: 1.28571rem;
   font-weight: 400;
 }
 
-.event_list .articles_list--element .content_wrapper .details, .event_list .main_list .articles_list--element-video .content_wrapper .details, .main_list .event_list .articles_list--element-video .content_wrapper .details, .event_list .main_list .articles_list--element-featured .content_wrapper .details, .main_list .event_list .articles_list--element-featured .content_wrapper .details {
+.event_list .articles_list--element .content_wrapper .details, .event_list .main_list .articles_list--element-video .content_wrapper .details, .main_list .event_list .articles_list--element-video .content_wrapper .details, .event_list .articles_list--element-featured .content_wrapper .details {
   margin: 0px;
   font-size: 0.71429rem;
   color: #575656;
@@ -979,6 +979,42 @@ Modules
   bottom: 5px;
   left: 10px;
   line-height: 14px;
+}
+
+.event_list .articles_list--element-featured {
+  background-color: black;
+  height: auto;
+}
+
+.event_list .articles_list--element-featured .img_wrapper {
+  padding-bottom: 146px;
+  width: 100%;
+}
+
+.event_list .articles_list--element-featured .img_wrapper .image {
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  right: 0px;
+}
+
+.event_list .articles_list--element-featured .content_wrapper {
+  padding: 8px 10px 3px 10px;
+  color: #ffffff;
+  width: 100%;
+  height: 85px;
+}
+
+.event_list .articles_list--element-featured .content_wrapper h3 {
+  color: #ffffff;
+}
+
+.event_list .articles_list--element-featured .content_wrapper .details {
+  color: #ffffff;
 }
 
 /* Module: S */
@@ -1133,7 +1169,7 @@ header .menutrigger {
   padding: 0;
 }
 
-.learning_list .articles_list--element, .learning_list .main_list .articles_list--element-video, .main_list .learning_list .articles_list--element-video, .learning_list .main_list .articles_list--element-featured, .main_list .learning_list .articles_list--element-featured {
+.learning_list .articles_list--element, .learning_list .main_list .articles_list--element-video, .main_list .learning_list .articles_list--element-video, .learning_list .main_list .articles_list--element-featured, .main_list .learning_list .articles_list--element-featured, .learning_list .event_list .articles_list--element-featured, .event_list .learning_list .articles_list--element-featured {
   clear: both;
   background-color: #ffffff;
   -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
@@ -1144,7 +1180,7 @@ header .menutrigger {
   margin-bottom: 10px;
 }
 
-.learning_list .articles_list--element .img_wrapper, .learning_list .main_list .articles_list--element-video .img_wrapper, .main_list .learning_list .articles_list--element-video .img_wrapper, .learning_list .main_list .articles_list--element-featured .img_wrapper, .main_list .learning_list .articles_list--element-featured .img_wrapper {
+.learning_list .articles_list--element .img_wrapper, .learning_list .main_list .articles_list--element-video .img_wrapper, .main_list .learning_list .articles_list--element-video .img_wrapper, .learning_list .main_list .articles_list--element-featured .img_wrapper, .main_list .learning_list .articles_list--element-featured .img_wrapper, .learning_list .event_list .articles_list--element-featured .img_wrapper, .event_list .learning_list .articles_list--element-featured .img_wrapper {
   background: url(mysource_files/img_wrapper.png) center center/cover no-repeat;
   position: relative;
   padding-bottom: 100px;
@@ -1155,7 +1191,7 @@ header .menutrigger {
   float: left;
 }
 
-.learning_list .articles_list--element .img_wrapper .image, .learning_list .main_list .articles_list--element-video .img_wrapper .image, .main_list .learning_list .articles_list--element-video .img_wrapper .image, .learning_list .main_list .articles_list--element-featured .img_wrapper .image, .main_list .learning_list .articles_list--element-featured .img_wrapper .image {
+.learning_list .articles_list--element .img_wrapper .image, .learning_list .main_list .articles_list--element-video .img_wrapper .image, .main_list .learning_list .articles_list--element-video .img_wrapper .image, .learning_list .main_list .articles_list--element-featured .img_wrapper .image, .main_list .learning_list .articles_list--element-featured .img_wrapper .image, .learning_list .event_list .articles_list--element-featured .img_wrapper .image, .event_list .learning_list .articles_list--element-featured .img_wrapper .image {
   background-position: center center;
   background-size: cover;
   background-repeat: no-repeat;
@@ -1166,7 +1202,7 @@ header .menutrigger {
   right: 0px;
 }
 
-.learning_list .articles_list--element .content_wrapper, .learning_list .main_list .articles_list--element-video .content_wrapper, .main_list .learning_list .articles_list--element-video .content_wrapper, .learning_list .main_list .articles_list--element-featured .content_wrapper, .main_list .learning_list .articles_list--element-featured .content_wrapper {
+.learning_list .articles_list--element .content_wrapper, .learning_list .main_list .articles_list--element-video .content_wrapper, .main_list .learning_list .articles_list--element-video .content_wrapper, .learning_list .main_list .articles_list--element-featured .content_wrapper, .main_list .learning_list .articles_list--element-featured .content_wrapper, .learning_list .event_list .articles_list--element-featured .content_wrapper, .event_list .learning_list .articles_list--element-featured .content_wrapper {
   position: relative;
   float: left;
   width: calc(100% - 100px);
@@ -1174,14 +1210,14 @@ header .menutrigger {
   padding: 8px 10px;
 }
 
-.learning_list .articles_list--element .content_wrapper h3, .learning_list .main_list .articles_list--element-video .content_wrapper h3, .main_list .learning_list .articles_list--element-video .content_wrapper h3, .learning_list .main_list .articles_list--element-featured .content_wrapper h3, .main_list .learning_list .articles_list--element-featured .content_wrapper h3 {
+.learning_list .articles_list--element .content_wrapper h3, .learning_list .main_list .articles_list--element-video .content_wrapper h3, .main_list .learning_list .articles_list--element-video .content_wrapper h3, .learning_list .main_list .articles_list--element-featured .content_wrapper h3, .main_list .learning_list .articles_list--element-featured .content_wrapper h3, .learning_list .event_list .articles_list--element-featured .content_wrapper h3, .event_list .learning_list .articles_list--element-featured .content_wrapper h3 {
   color: black;
   margin: 2px 0px;
   font-size: 1.28571rem;
   font-weight: 400;
 }
 
-.learning_list .articles_list--element .content_wrapper .details, .learning_list .main_list .articles_list--element-video .content_wrapper .details, .main_list .learning_list .articles_list--element-video .content_wrapper .details, .learning_list .main_list .articles_list--element-featured .content_wrapper .details, .main_list .learning_list .articles_list--element-featured .content_wrapper .details {
+.learning_list .articles_list--element .content_wrapper .details, .learning_list .main_list .articles_list--element-video .content_wrapper .details, .main_list .learning_list .articles_list--element-video .content_wrapper .details, .learning_list .main_list .articles_list--element-featured .content_wrapper .details, .main_list .learning_list .articles_list--element-featured .content_wrapper .details, .learning_list .event_list .articles_list--element-featured .content_wrapper .details, .event_list .learning_list .articles_list--element-featured .content_wrapper .details {
   margin: 0px;
   font-size: 0.85714rem;
   color: #575656;
@@ -1294,7 +1330,7 @@ header .menutrigger {
   text-align: center;
 }
 
-.record_list .articles_list--element, .record_list .main_list .articles_list--element-video, .main_list .record_list .articles_list--element-video, .record_list .main_list .articles_list--element-featured, .main_list .record_list .articles_list--element-featured {
+.record_list .articles_list--element, .record_list .main_list .articles_list--element-video, .main_list .record_list .articles_list--element-video, .record_list .main_list .articles_list--element-featured, .main_list .record_list .articles_list--element-featured, .record_list .event_list .articles_list--element-featured, .event_list .record_list .articles_list--element-featured {
   clear: both;
   background-color: #ffffff;
   -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
@@ -1305,11 +1341,11 @@ header .menutrigger {
   margin-bottom: 10px;
 }
 
-.record_list .articles_list--element a, .record_list .main_list .articles_list--element-video a, .main_list .record_list .articles_list--element-video a, .record_list .main_list .articles_list--element-featured a, .main_list .record_list .articles_list--element-featured a {
+.record_list .articles_list--element a, .record_list .main_list .articles_list--element-video a, .main_list .record_list .articles_list--element-video a, .record_list .main_list .articles_list--element-featured a, .main_list .record_list .articles_list--element-featured a, .record_list .event_list .articles_list--element-featured a, .event_list .record_list .articles_list--element-featured a {
   text-decoration: none;
 }
 
-.record_list .articles_list--element a .content_wrapper, .record_list .main_list .articles_list--element-video a .content_wrapper, .main_list .record_list .articles_list--element-video a .content_wrapper, .record_list .main_list .articles_list--element-featured a .content_wrapper, .main_list .record_list .articles_list--element-featured a .content_wrapper {
+.record_list .articles_list--element a .content_wrapper, .record_list .main_list .articles_list--element-video a .content_wrapper, .main_list .record_list .articles_list--element-video a .content_wrapper, .record_list .main_list .articles_list--element-featured a .content_wrapper, .main_list .record_list .articles_list--element-featured a .content_wrapper, .record_list .event_list .articles_list--element-featured a .content_wrapper, .event_list .record_list .articles_list--element-featured a .content_wrapper {
   position: relative;
   float: left;
   width: calc(100% - 70px);
@@ -1317,7 +1353,7 @@ header .menutrigger {
   padding: 8px 10px;
 }
 
-.record_list .articles_list--element a .content_wrapper h3, .record_list .main_list .articles_list--element-video a .content_wrapper h3, .main_list .record_list .articles_list--element-video a .content_wrapper h3, .record_list .main_list .articles_list--element-featured a .content_wrapper h3, .main_list .record_list .articles_list--element-featured a .content_wrapper h3 {
+.record_list .articles_list--element a .content_wrapper h3, .record_list .main_list .articles_list--element-video a .content_wrapper h3, .main_list .record_list .articles_list--element-video a .content_wrapper h3, .record_list .main_list .articles_list--element-featured a .content_wrapper h3, .main_list .record_list .articles_list--element-featured a .content_wrapper h3, .record_list .event_list .articles_list--element-featured a .content_wrapper h3, .event_list .record_list .articles_list--element-featured a .content_wrapper h3 {
   color: black;
   margin: 2px 0px;
   font-size: 1.28571rem;
@@ -1325,7 +1361,7 @@ header .menutrigger {
   text-decoration: none;
 }
 
-.record_list .articles_list--element a .content_wrapper .timestamp, .record_list .main_list .articles_list--element-video a .content_wrapper .timestamp, .main_list .record_list .articles_list--element-video a .content_wrapper .timestamp, .record_list .main_list .articles_list--element-featured a .content_wrapper .timestamp, .main_list .record_list .articles_list--element-featured a .content_wrapper .timestamp {
+.record_list .articles_list--element a .content_wrapper .timestamp, .record_list .main_list .articles_list--element-video a .content_wrapper .timestamp, .main_list .record_list .articles_list--element-video a .content_wrapper .timestamp, .record_list .main_list .articles_list--element-featured a .content_wrapper .timestamp, .main_list .record_list .articles_list--element-featured a .content_wrapper .timestamp, .record_list .event_list .articles_list--element-featured a .content_wrapper .timestamp, .event_list .record_list .articles_list--element-featured a .content_wrapper .timestamp {
   margin: 0px;
   font-size: 0.71429rem;
   color: #575656;
@@ -1335,7 +1371,7 @@ header .menutrigger {
   line-height: 20px;
 }
 
-.record_list .articles_list--element a .rmv_wrapper, .record_list .main_list .articles_list--element-video a .rmv_wrapper, .main_list .record_list .articles_list--element-video a .rmv_wrapper, .record_list .main_list .articles_list--element-featured a .rmv_wrapper, .main_list .record_list .articles_list--element-featured a .rmv_wrapper {
+.record_list .articles_list--element a .rmv_wrapper, .record_list .main_list .articles_list--element-video a .rmv_wrapper, .main_list .record_list .articles_list--element-video a .rmv_wrapper, .record_list .main_list .articles_list--element-featured a .rmv_wrapper, .main_list .record_list .articles_list--element-featured a .rmv_wrapper, .record_list .event_list .articles_list--element-featured a .rmv_wrapper, .event_list .record_list .articles_list--element-featured a .rmv_wrapper {
   background: url(mysource_files/remove.svg) center center no-repeat;
   position: relative;
   padding-bottom: 100px;
@@ -1347,7 +1383,7 @@ header .menutrigger {
   text-align: center;
 }
 
-.record_list .articles_list--element a .rmv_wrapper p, .record_list .main_list .articles_list--element-video a .rmv_wrapper p, .main_list .record_list .articles_list--element-video a .rmv_wrapper p, .record_list .main_list .articles_list--element-featured a .rmv_wrapper p, .main_list .record_list .articles_list--element-featured a .rmv_wrapper p {
+.record_list .articles_list--element a .rmv_wrapper p, .record_list .main_list .articles_list--element-video a .rmv_wrapper p, .main_list .record_list .articles_list--element-video a .rmv_wrapper p, .record_list .main_list .articles_list--element-featured a .rmv_wrapper p, .main_list .record_list .articles_list--element-featured a .rmv_wrapper p, .record_list .event_list .articles_list--element-featured a .rmv_wrapper p, .event_list .record_list .articles_list--element-featured a .rmv_wrapper p {
   position: absolute;
   bottom: 15px;
   left: 0;

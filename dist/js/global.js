@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Wed Apr 10 2019 14:04:44 GMT+0100 (BST) - First revision
+ *     Wed Apr 17 2019 11:20:14 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -44,22 +44,28 @@ Modules
 $(document).ready(function () {
   if ($('.main_article').length > 0) {
 
-    getArticles(user);
+    if (navigator.onLine) {
+      getArticles(user);
+    }
 
     $('.socialicons .button').on('click', function (e) {
-      e.preventDefault();
-      var $this = $(this);
-      if ($this.hasClass('active')) {
-        var actualArticle = $this.attr('data-articleid');
-        removeFromRecord(user, actualArticle, $this);
-      } else {
-        var _actualArticle = $this.attr('data-articleid') + ';';
-        addToRecord(user, _actualArticle, $this);
+      if (navigator.onLine) {
+        console.log('online ' + navigator.onLine);
+        e.preventDefault();
+        var $this = $(this);
+        if ($this.hasClass('active')) {
+          var actualArticle = $this.attr('data-articleid');
+          removeFromRecord(user, actualArticle, $this);
+        } else {
+          var _actualArticle = $this.attr('data-articleid') + ';';
+          addToRecord(user, _actualArticle, $this);
+        }
       }
     });
   }
 });
-//remove articleId from metadata
+// remove articleId from metadata
+
 function removeFromRecord(assetId, articleId, button) {
   var actualArticlesString = void 0;
   js_api.acquireLock({
@@ -68,6 +74,7 @@ function removeFromRecord(assetId, articleId, button) {
     "force_acquire": true,
     "dataCallback": remArticleMetadata
   });
+
   function remArticleMetadata(object) {
     console.log('remove metadata. object:');
     console.log(object);
@@ -80,6 +87,7 @@ function removeFromRecord(assetId, articleId, button) {
       });
     }
   }
+
   function storeToArrayToRemove(object) {
     $('.main_article').attr('data-articlelist', object["Saved.Record"]);
     actualArticles = object["Saved.Record"].split(';');
@@ -102,6 +110,7 @@ function removeFromRecord(assetId, articleId, button) {
       });
     }
   }
+
   function releaseLockListArticle(assetId) {
     js_api.releaseLock({
       "asset_id": assetId,
@@ -110,6 +119,7 @@ function removeFromRecord(assetId, articleId, button) {
       }
     });
   }
+
   function setNonActive(button) {
     $('.main_article').attr('data-articlelist', actualArticlesString);
     button.removeClass('active').html('Add to Learning Record');
@@ -124,6 +134,7 @@ function addToRecord(assetId, articleId, button) {
     "force_acquire": true,
     "dataCallback": setArticleMetadata
   });
+
   function setArticleMetadata(object) {
     console.log('seta metadata. object:');
     console.log(object);
@@ -144,6 +155,7 @@ function addToRecord(assetId, articleId, button) {
       });
     }
   }
+
   function releaseLockArticle(assetId) {
     js_api.releaseLock({
       "asset_id": assetId,
@@ -152,6 +164,7 @@ function addToRecord(assetId, articleId, button) {
       }
     });
   }
+
   function setActive(button) {
     button.addClass('active').html('Added to Learning Record');
   }
@@ -163,12 +176,11 @@ function getArticles(assetId) {
     "asset_id": assetId,
     "dataCallback": storeToArray
   });
+
   function storeToArray(object) {
     if (object["Saved.Record"]) {
-      //   console.log('article before split: ' + object["Saved.Record"]);
       $('.main_article').attr('data-articlelist', object["Saved.Record"]);
       actualArticles = object["Saved.Record"].split(';');
-      //   console.log('article after split: ' + actualArticles);
       $('.socialicons .button').each(function () {
         var $this = $(this);
         var articleid = $this.attr('data-articleid').toString();
@@ -334,6 +346,16 @@ window.addEventListener('online', function (e) {
   $('.app_area').css('margin-top', '-68px');
   $('.sw_message').css('opacity', '0');
 });
+
+$(document).ready(function () {
+  if (navigator.onLine) {
+    $('.app_area').css('margin-top', '-68px');
+    $('.sw_message').css('opacity', '0');
+  } else {
+    $('.app_area').css('margin-top', '0');
+    $('.sw_message').css('opacity', '1');
+  }
+});
 // this part is in Matrix start
 // this part will be in the pain layout of the page
 //
@@ -352,8 +374,9 @@ $(document).ready(function () {
   if ($('.topics').length > 0) {
 
     //apply active class to subscribed categories
-    getCategories(user);
-
+    if (navigator.onLine) {
+      getCategories(user);
+    }
     // add/remove category on Click
     $('ul.topics-list .topics-list__item').on('click', function (e) {
       e.preventDefault();
@@ -364,14 +387,18 @@ $(document).ready(function () {
     //submit selections
     $('.nextButton a').on('click', function (e) {
       e.preventDefault();
-      var $this = $(this);
-      var destination = $this.attr('href');
-      $('ul.topics-list .topics-list__item').each(function () {
-        if ($(this).hasClass('active')) {
-          toAdd.push($(this).data('subscription'));
-        }
-      });
-      setCategories(user, destination);
+      if (navigator.onLine) {
+        var $this = $(this);
+        var _destination = $this.attr('href');
+        $('ul.topics-list .topics-list__item').each(function () {
+          if ($(this).hasClass('active')) {
+            toAdd.push($(this).data('subscription'));
+          }
+        });
+        setCategories(user, _destination);
+      } else {
+        window.location.href = destination;
+      }
     });
   }
 });
@@ -382,6 +409,7 @@ function getCategories(assetId) {
     "asset_id": assetId,
     "dataCallback": storeToArray
   });
+
   function storeToArray(object) {
     if (object["Selected.Topics"]) {
       arrayCategories = object["Selected.Topics"].split('; ');
@@ -404,6 +432,7 @@ function setCategories(assetId, urlDestination) {
     "force_acquire": true,
     "dataCallback": setAssetMetadata
   });
+
   function setAssetMetadata(object) {
     console.log('seta metadata. object:');
     console.log(object);
@@ -421,12 +450,14 @@ function setCategories(assetId, urlDestination) {
       });
     }
   }
+
   function releaseLock(assetId) {
     js_api.releaseLock({
       "asset_id": assetId,
       "dataCallback": redirect
     });
   }
+
   function redirect() {
     window.location.href = urlDestination;
   }
