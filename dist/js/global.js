@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Wed Apr 17 2019 11:20:14 GMT+0100 (BST) - First revision
+ *     Wed Apr 17 2019 15:13:29 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -356,16 +356,6 @@ window.addEventListener('load', function (e) {
     document.getElementsByClassName('sw_message').style.opacity = "1";
   }
 }, false);
-
-// $(document).ready(function(){
-//   if (navigator.onLine) {
-//     $('.app_area').css('margin-top','-68px');
-//     $('.sw_message').css('opacity','0');
-//   } else {
-//     $('.app_area').css('margin-top','0');
-//     $('.sw_message').css('opacity','1');
-//   }
-// });
 // this part is in Matrix start
 // this part will be in the pain layout of the page
 //

@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Wed Apr 17 2019 11:20:14 GMT+0100 (BST)
+ * updated: Wed Apr 17 2019 15:13:29 GMT+0100 (BST)
  *
  * Table of Contents
  *
@@ -911,6 +911,27 @@ Modules
 }
 
 /* Module: S */
+.error_page {
+  transition: all 0.5s ease-in-out;
+  margin-top: -68px;
+  padding: 10px 10px 80px 10px;
+}
+
+.error_page p {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.error_page p a {
+  color: #222;
+  text-decoration: none;
+}
+
+.error_page p a:hover, .error_page p a:focus {
+  text-decoration: none;
+}
+
+/* Module: S */
 .event_list {
   transition: all 0.5s ease-in-out;
   margin-top: -68px;
@@ -1233,7 +1254,10 @@ header .menutrigger {
   text-align: center;
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-35%);
+  transition: all 0.5s ease-in-out;
+  margin-top: -68px;
+  padding: 10px 10px 80px 10px;
 }
 
 .logo {
