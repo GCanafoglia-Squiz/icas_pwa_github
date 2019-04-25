@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Thu Apr 18 2019 11:19:13 GMT+0100 (BST) - First revision
+ *     Thu Apr 25 2019 12:16:30 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -42,6 +42,15 @@ Modules
 // This part in Matrix End
 
 $(document).ready(function () {
+  if ($('#referer_from_sw').length > 0) {
+    $('#referer_from_sw').on('click', function (e) {
+      e.preventDefault();
+      if (history.length != 0) {
+        window.history.back();
+      }
+    });
+  }
+
   if ($('.main_article').length > 0) {
 
     if (navigator.onLine) {
@@ -360,15 +369,15 @@ $(document).ready(function () {
     //submit selections
     $('.nextButton a').on('click', function (e) {
       e.preventDefault();
+      var $this = $(this);
+      var destination = $this.attr('href');
       if (navigator.onLine) {
-        var $this = $(this);
-        var _destination = $this.attr('href');
         $('ul.topics-list .topics-list__item').each(function () {
           if ($(this).hasClass('active')) {
             toAdd.push($(this).data('subscription'));
           }
         });
-        setCategories(user, _destination);
+        setCategories(user, destination);
       } else {
         window.location.href = destination;
       }
@@ -384,8 +393,8 @@ function getCategories(assetId) {
   });
 
   function storeToArray(object) {
-    if (object["Selected.Topics"]) {
-      arrayCategories = object["Selected.Topics"].split('; ');
+    if (object["Selected.Topics.Nospace"]) {
+      arrayCategories = object["Selected.Topics.Nospace"].split('; ');
       $('ul.topics-list .topics-list__item').each(function () {
         var $this = $(this);
         var category = $this.data('subscription').toString();
@@ -415,7 +424,7 @@ function setCategories(assetId, urlDestination) {
       var setStringCategories = toAdd.join('; ');
       js_api.setMetadata({
         "asset_id": assetId,
-        "field_id": 448763,
+        "field_id": 455271,
         "field_val": setStringCategories,
         "dataCallback": function dataCallback() {
           releaseLock(assetId);

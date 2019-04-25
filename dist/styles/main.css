@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Thu Apr 18 2019 11:19:13 GMT+0100 (BST)
+ * updated: Thu Apr 25 2019 12:16:30 GMT+0100 (BST)
  *
  * Table of Contents
  *
@@ -812,6 +812,8 @@ Modules
   font-size: 0.71429rem;
   color: #006EB6;
   font-weight: 600;
+  max-height: 18px;
+  overflow: hidden;
 }
 
 .main_list .articles_list--element .content_wrapper h3, .main_list .articles_list--element-video .content_wrapper h3, .main_list .articles_list--element-featured .content_wrapper h3 {
