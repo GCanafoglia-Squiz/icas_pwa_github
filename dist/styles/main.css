@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Thu Apr 25 2019 12:16:30 GMT+0100 (BST)
+ * updated: Mon Apr 29 2019 17:13:29 GMT+0100 (BST)
  *
  * Table of Contents
  *
@@ -1307,7 +1307,12 @@ header .menutrigger {
   display: block;
   width: 100%;
   height: 57px;
-  margin: 0 0 204px 0;
+  margin: 0 0 104px 0;
+}
+
+.betaversion {
+  padding: 0 40px;
+  margin-bottom: 50px;
 }
 
 .button {
@@ -1385,6 +1390,10 @@ header .menutrigger {
   padding: 10px 10px 80px 10px;
 }
 
+.record_list .untilexpire {
+  text-align: center;
+}
+
 .record_list .articles_list {
   list-style: none;
   margin: 0;
@@ -1413,9 +1422,9 @@ header .menutrigger {
 .record_list .articles_list--element a .content_wrapper, .record_list .main_list .articles_list--element-video a .content_wrapper, .main_list .record_list .articles_list--element-video a .content_wrapper, .record_list .main_list .articles_list--element-featured a .content_wrapper, .main_list .record_list .articles_list--element-featured a .content_wrapper, .record_list .event_list .articles_list--element-featured a .content_wrapper, .event_list .record_list .articles_list--element-featured a .content_wrapper {
   position: relative;
   float: left;
-  width: calc(100% - 70px);
+  width: calc(100% - 60px);
   height: 100px;
-  padding: 8px 10px;
+  padding: 8px 0px 8px 10px;
 }
 
 .record_list .articles_list--element a .content_wrapper h3, .record_list .main_list .articles_list--element-video a .content_wrapper h3, .main_list .record_list .articles_list--element-video a .content_wrapper h3, .record_list .main_list .articles_list--element-featured a .content_wrapper h3, .main_list .record_list .articles_list--element-featured a .content_wrapper h3, .record_list .event_list .articles_list--element-featured a .content_wrapper h3, .event_list .record_list .articles_list--element-featured a .content_wrapper h3 {
@@ -1431,9 +1440,15 @@ header .menutrigger {
   font-size: 0.71429rem;
   color: #575656;
   position: absolute;
-  bottom: 10px;
+  bottom: 1px;
   left: 10px;
   line-height: 20px;
+}
+
+@media screen and (min-width: 321px) {
+  .record_list .articles_list--element a .content_wrapper .timestamp, .record_list .main_list .articles_list--element-video a .content_wrapper .timestamp, .main_list .record_list .articles_list--element-video a .content_wrapper .timestamp, .record_list .main_list .articles_list--element-featured a .content_wrapper .timestamp, .main_list .record_list .articles_list--element-featured a .content_wrapper .timestamp, .record_list .event_list .articles_list--element-featured a .content_wrapper .timestamp, .event_list .record_list .articles_list--element-featured a .content_wrapper .timestamp {
+    bottom: 10px;
+  }
 }
 
 .record_list .articles_list--element a .rmv_wrapper, .record_list .main_list .articles_list--element-video a .rmv_wrapper, .main_list .record_list .articles_list--element-video a .rmv_wrapper, .record_list .main_list .articles_list--element-featured a .rmv_wrapper, .main_list .record_list .articles_list--element-featured a .rmv_wrapper, .record_list .event_list .articles_list--element-featured a .rmv_wrapper, .event_list .record_list .articles_list--element-featured a .rmv_wrapper {
@@ -1443,7 +1458,7 @@ header .menutrigger {
   height: 0;
   overflow: hidden;
   margin-bottom: 0;
-  width: 70px;
+  width: 60px;
   float: right;
   text-align: center;
 }
@@ -1492,6 +1507,12 @@ header .menutrigger {
   width: 10px;
   height: 10px;
   background: url(mysource_files/closetrigger.svg) center center/contain no-repeat;
+}
+
+.slide_in_menu .betaversion {
+  padding: 0px 20px;
+  margin-top: 50px;
+  text-align: left;
 }
 
 .slide_in_menu_open {

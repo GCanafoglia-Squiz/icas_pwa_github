@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Thu Apr 25 2019 12:16:30 GMT+0100 (BST) - First revision
+ *     Mon Apr 29 2019 17:13:29 GMT+0100 (BST) - First revision
  */
 
 /*
