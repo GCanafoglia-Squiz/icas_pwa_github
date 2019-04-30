@@ -1098,14 +1098,13 @@ header .toplogo_centered {
   height: 39px;
   text-align: center;
   margin: auto;
-  padding-top: 20px;
+  padding-top: 16px;
 }
 
-header .toplogo_centered span {
-  padding-left: 10px;
-  font-size: 1rem;
-  display: table-cell;
-  vertical-align: middle;
+header .toplogo_centered .toplogoimage {
+  width: 100px;
+  height: 47px;
+  background: url(mysource_files/calogo.png) center center/contain no-repeat;
 }
 
 header .toplogo {
@@ -1115,14 +1114,13 @@ header .toplogo {
   height: 39px;
   text-align: center;
   margin: auto;
-  padding: 8px 15px 0 0;
+  padding: 4px 15px 0 0;
 }
 
-header .toplogo span {
-  padding-left: 10px;
-  font-size: 1rem;
-  display: table-cell;
-  vertical-align: middle;
+header .toplogo .toplogoimage {
+  width: 100px;
+  height: 47px;
+  background: url(mysource_files/calogo.png) center center/contain no-repeat;
 }
 
 header .menutrigger {
