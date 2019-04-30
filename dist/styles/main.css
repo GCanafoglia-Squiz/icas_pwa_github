@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Mon Apr 29 2019 17:13:29 GMT+0100 (BST)
+ * updated: Tue Apr 30 2019 14:26:13 GMT+0100 (BST)
  *
  * Table of Contents
  *
@@ -1303,7 +1303,7 @@ header .menutrigger {
 }
 
 .logo {
-  background: url(mysource_files/icas_logo.gif) center center/contain no-repeat;
+  background: url(mysource_files/calogo.png) center center/contain no-repeat;
   display: block;
   width: 100%;
   height: 57px;
