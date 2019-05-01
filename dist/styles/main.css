@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Wed May 01 2019 14:29:00 GMT+0100 (BST)
+ * updated: Wed May 01 2019 16:35:59 GMT+0100 (BST)
  *
  * Table of Contents
  *
@@ -1293,6 +1293,22 @@ header .menutrigger {
   transition: all 0.5s ease-in-out;
 }
 
+.login .button {
+  background-color: #4197f8;
+  font-size: 1.14286rem;
+  font-weight: 400;
+  padding: 0.6em 2.6em;
+  position: absolute;
+  bottom: 125px;
+  left: calc(50% - 63px);
+}
+
+.login .button:focus, .login .button:hover {
+  color: #ffffff;
+  text-decoration: none;
+  background-color: #006EB6;
+}
+
 .formatterwrapper {
   position: fixed;
   top: 0;
@@ -1323,22 +1339,6 @@ header .menutrigger {
 .betaversion {
   padding: 0 40px;
   margin-bottom: 50px;
-}
-
-.button {
-  background-color: #4197f8;
-  font-size: 1.14286rem;
-  font-weight: 400;
-  padding: 0.6em 2.6em;
-  position: absolute;
-  bottom: 125px;
-  left: calc(50% - 63px);
-}
-
-.button:focus, .button:hover {
-  color: #ffffff;
-  text-decoration: none;
-  background-color: #006EB6;
 }
 
 /* Module: S */
