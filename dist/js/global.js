@@ -59,7 +59,7 @@ $(document).ready(function () {
         url: url,
         type: "GET"
       }).done(function (data, status) {
-        console.log(data["userid"]);
+        console.log("data received = " + data["userid"]);
         user = data["userid"];
         console.log("Status: " + status);
         getArticles(user);
@@ -348,7 +348,6 @@ window.addEventListener('online', function (e) {
 
 window.addEventListener('load', function (e) {
   if (navigator.onLine) {
-    console.log(document.getElementsByClassName('articlewrapper').length);
     document.getElementsByClassName('app_area')[0].style.marginTop = "0";
     document.getElementsByClassName('sw_message')[0].style.opacity = "0";
   } else {
