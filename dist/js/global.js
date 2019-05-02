@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Wed May 01 2019 16:35:59 GMT+0100 (BST) - First revision
+ *     Thu May 02 2019 14:46:37 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -52,9 +52,22 @@ $(document).ready(function () {
   }
 
   if ($('.main_article').length > 0) {
-
+    var url = $('.main_article').attr('data-ajaxurl');
     if (navigator.onLine) {
-      getArticles(user);
+      $.ajax({
+        dataType: 'json',
+        url: url,
+        type: "GET"
+      }).done(function (data, status) {
+        console.log(data["userid"]);
+        user = data["userid"];
+        console.log("Status: " + status);
+        getArticles(user);
+      }).fail(function (xhr, status, errorThrown) {
+        $('.socialicons .button').addClass('buttonerror').html('Limited functionalities');
+        console.log("Error: " + errorThrown);
+        console.log("Status: " + status);
+      });
     }
 
     $('.socialicons .button').on('click', function (e) {
@@ -320,7 +333,11 @@ function removeButton(assetId, articleId, button) {
   }
 }
 window.addEventListener('offline', function (e) {
-  $('.app_area').css('margin-top', '68px');
+  if ($('.articlewrapper').length > 0) {
+    $('.app_area').css('margin-top', '100px');
+  } else {
+    $('.app_area').css('margin-top', '68px');
+  }
   $('.sw_message').css('opacity', '1');
 }, false);
 
@@ -331,10 +348,15 @@ window.addEventListener('online', function (e) {
 
 window.addEventListener('load', function (e) {
   if (navigator.onLine) {
+    console.log(document.getElementsByClassName('articlewrapper').length);
     document.getElementsByClassName('app_area')[0].style.marginTop = "0";
     document.getElementsByClassName('sw_message')[0].style.opacity = "0";
   } else {
-    document.getElementsByClassName('app_area')[0].style.marginTop = "68px";
+    if (document.getElementsByClassName('articlewrapper').length > 0) {
+      document.getElementsByClassName('app_area')[0].style.marginTop = "100px";
+    } else {
+      document.getElementsByClassName('app_area')[0].style.marginTop = "68px";
+    }
     document.getElementsByClassName('sw_message')[0].style.opacity = "1";
   }
 }, false);
