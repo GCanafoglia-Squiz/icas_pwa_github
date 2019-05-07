@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Thu May 02 2019 14:46:37 GMT+0100 (BST) - First revision
+ *     Tue May 07 2019 17:22:07 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -55,16 +55,31 @@ $(document).ready(function () {
     var url = $('.main_article').attr('data-ajaxurl');
     if (navigator.onLine) {
       $.ajax({
-        dataType: 'json',
-        url: url,
+        url: "https://app.icas.com/_designs/ajax-content/token",
         type: "GET"
       }).done(function (data, status) {
-        console.log("data received = " + data["userid"]);
-        user = data["userid"];
-        console.log("Status: " + status);
-        getArticles(user);
+        console.log(data);
+        $('#token').attr('value', $(data).attr('value'));
+        var options = new Array();
+        options['key'] = '9400745924';
+        js_api = new Squiz_Matrix_API(options);
+
+        $.ajax({
+          dataType: 'json',
+          url: url,
+          type: "GET"
+        }).done(function (data, status) {
+          console.log("data received = " + data["userid"]);
+          user = data["userid"];
+          console.log("onLoaduser: " + status);
+          getArticles(user);
+        }).fail(function (xhr, status, errorThrown) {
+          $('.socialicons .button').addClass('buttonerror').html('Limited functionalities');
+          console.log("Error: " + errorThrown);
+          console.log("Status: " + status);
+        });
       }).fail(function (xhr, status, errorThrown) {
-        $('.socialicons .button').addClass('buttonerror').html('Limited functionalities');
+        console.log('token error');
         console.log("Error: " + errorThrown);
         console.log("Status: " + status);
       });
