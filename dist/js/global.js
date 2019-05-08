@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Wed May 08 2019 13:59:40 GMT+0100 (BST) - First revision
+ *     Wed May 08 2019 15:40:14 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -45,9 +45,11 @@ $(document).ready(function () {
   if ($('#referer_from_sw').length > 0) {
     $('#referer_from_sw').on('click', function (e) {
       e.preventDefault();
-      if (history.length != 0) {
-        window.history.back();
+      if (history.length > 1) {
+        console.log(history.length);
+        window.history.go(-1);
       } else {
+        console.log(history.length + "back home");
         window.location.href = 'https://app.icas.com/home';
       }
     });
@@ -60,6 +62,7 @@ $(document).ready(function () {
         url: "https://app.icas.com/_designs/ajax-content/token",
         type: "GET"
       }).done(function (data, status) {
+        console.log('token');
         $('#token').attr('value', $(data).attr('value'));
         var options = new Array();
         options['key'] = '9400745924';
