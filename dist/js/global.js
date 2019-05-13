@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Wed May 08 2019 15:40:14 GMT+0100 (BST) - First revision
+ *     Mon May 13 2019 11:02:39 GMT+0100 (BST) - First revision
  */
 
 /*
@@ -46,10 +46,10 @@ $(document).ready(function () {
     $('#referer_from_sw').on('click', function (e) {
       e.preventDefault();
       if (history.length > 1) {
-        console.log(history.length);
+        // console.log(history.length);
         window.history.go(-1);
       } else {
-        console.log(history.length + "back home");
+        // console.log(history.length + " back home");
         window.location.href = 'https://app.icas.com/home';
       }
     });
@@ -62,7 +62,7 @@ $(document).ready(function () {
         url: "https://app.icas.com/_designs/ajax-content/token",
         type: "GET"
       }).done(function (data, status) {
-        console.log('token');
+        // console.log('token');
         $('#token').attr('value', $(data).attr('value'));
         var options = new Array();
         options['key'] = '9400745924';
@@ -72,9 +72,9 @@ $(document).ready(function () {
           url: url,
           type: "GET"
         }).done(function (data, status) {
-          console.log("data received = " + data["userid"]);
+          // console.log("data received = " + data["userid"]);
           user = data["userid"];
-          console.log("onLoaduser: " + status);
+          // console.log("onLoaduser: " + status);
           getArticles(user);
         }).fail(function (xhr, status, errorThrown) {
           $('.socialicons .button').addClass('buttonerror').html('Limited functionalities');
