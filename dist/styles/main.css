@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Mon May 13 2019 11:02:39 GMT+0100 (BST)
+ * updated: Fri Jun 07 2019 11:52:45 GMT+0100 (BST)
  *
  * Table of Contents
  *
@@ -332,6 +332,7 @@ body {
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
 input,
