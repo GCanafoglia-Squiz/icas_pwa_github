@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Tue Oct 15 2019 16:30:10 GMT+0100 (British Summer Time)
+ * updated: Tue Oct 15 2019 17:10:11 GMT+0100 (British Summer Time)
  *
  * Table of Contents
  *
@@ -640,6 +640,59 @@ Modules
 .main_article iframe {
   max-width: 700px;
   width: 100%;
+}
+
+.main_article .accordion article {
+  display: block;
+}
+
+.main_article .accordion article .content {
+  padding-bottom: 10px;
+}
+
+.main_article .accordion article .content a {
+  color: #585858;
+  font-weight: 400;
+  text-decoration: underline;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main_article .accordion article .handle {
+  position: relative;
+  margin: 0;
+  padding: 0.625em 0px 0.625em 0;
+  cursor: pointer;
+  align-items: center;
+  border-bottom: 1px solid #dcdcdc;
+  color: #585858;
+  display: flex;
+  font-size: 1.25em;
+  font-weight: 400;
+  justify-content: space-between;
+  transition: color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main_article .accordion article .handle .fa-minus {
+  display: none;
+}
+
+.main_article .accordion article .handle svg {
+  height: 18px;
+  margin-left: 0.25em;
+  min-width: 16px;
+  transition: fill 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 16px;
+  fill: #313131;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.main_article .accordion .open .handle .fa-minus {
+  display: block;
+}
+
+.main_article .accordion .open .handle .fa-plus {
+  display: none;
 }
 
 .main_article .introimage {

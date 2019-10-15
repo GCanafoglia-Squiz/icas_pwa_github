@@ -7,7 +7,7 @@
  * file:    global.js
  * author:  Squiz Australia
  * change log:
- *     Tue Oct 15 2019 16:30:10 GMT+0100 (British Summer Time) - First revision
+ *     Tue Oct 15 2019 17:10:11 GMT+0100 (British Summer Time) - First revision
  */
 
 /*
@@ -224,6 +224,54 @@ function getArticles(assetId) {
     }
   }
 }
+
+$(function () {
+
+  var pwa = {
+    'vars': {},
+    'fn': {}
+  };
+
+  /*  Accordion
+   *  ********************************  */
+
+  // Initialisation
+  $('.app_area .accordion').each(function () {
+    var $accordion = $(this);
+    var $content = $accordion.find('.content');
+    $content.hide();
+    $accordion.addClass('active');
+  });
+  // Interaction
+  $('.app_area .accordion .handle').on('click', function () {
+    var $handle = $(this);
+    var $article = $handle.parent('article');
+    var $content = $handle.next('.content');
+    // Close clicked accordion
+    if ($article.hasClass('open')) {
+      pwa.fn.closeAccordion($article, $content);
+    }
+    // Open clicked accordion
+    else {
+        $content.slideDown(250, function () {
+          $article.addClass('open');
+        });
+      }
+    // Close other open accordions
+    var $openArticles = $article.siblings('.open');
+    $openArticles.each(function () {
+      var $openArticle = $(this);
+      var $openContent = $openArticle.children('.content');
+      pwa.fn.closeAccordion($openArticle, $openContent);
+    });
+  });
+  pwa.fn.closeAccordion = function ($article, $content) {
+    $article.removeClass('open');
+    $content.slideUp(250);
+  };
+
+  window.pwa = pwa;
+});
 $(document).ready(function () {
   $('.menutrigger').on('click', function () {
     $('.slide_in_menu').toggleClass('slide_in_menu_open');
