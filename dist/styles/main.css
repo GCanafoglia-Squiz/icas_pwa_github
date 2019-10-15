@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Fri Jun 07 2019 11:52:45 GMT+0100 (BST)
+ * updated: Tue Oct 15 2019 10:38:13 GMT+0100 (British Summer Time)
  *
  * Table of Contents
  *
@@ -371,12 +371,12 @@ caption {
 }
 
 th {
-  background: #222;
-  color: #dddddd;
+  background: #4a4a4a;
+  color: #b5b5b5;
 }
 
 td {
-  border: 1px solid #222;
+  border: 1px solid #4a4a4a;
 }
 
 /* Buttons */
@@ -384,8 +384,8 @@ td {
   -webkit-transition: background-color 0.3s ease;
   -moz-transition: background-color 0.3s ease;
   transition: background-color 0.3s ease;
-  background-color: #222;
-  color: #dddddd;
+  background-color: #4a4a4a;
+  color: #b5b5b5;
   display: inline-block;
   border: 0;
   padding: .5em 1em;
@@ -396,7 +396,7 @@ td {
 }
 
 .button:focus, .button:hover {
-  background-color: black;
+  background-color: #171717;
 }
 
 .button--large {
@@ -419,7 +419,7 @@ blockquote {
 blockquote:before {
   font-size: 70px;
   font-size: 5rem;
-  color: #222;
+  color: #4a4a4a;
   content: "\201C";
   position: absolute;
   top: 0;
@@ -428,7 +428,7 @@ blockquote:before {
 }
 
 .pull-quote {
-  border-top: 1px solid #222;
+  border-top: 1px solid #4a4a4a;
   padding: 1em .5em 0 .5em;
   margin: 1em;
 }
@@ -510,7 +510,7 @@ html {
 
 body {
   line-height: 1.7;
-  color: #222;
+  color: #4a4a4a;
   font-weight: 400;
   background-color: #ffffff;
   -webkit-overflow-scrolling: touch;
@@ -628,12 +628,12 @@ Modules
 }
 
 .main_article h1 a, .main_article h2 a, .main_article h3 a, .main_article h4 a {
-  color: #222;
+  color: #4a4a4a;
   text-decoration: none;
 }
 
 .main_article p a {
-  color: #222;
+  color: #4a4a4a;
   text-decoration: none;
 }
 
@@ -715,8 +715,8 @@ Modules
 }
 
 .main_article .socialicons .button.active {
-  background-color: #81bb26;
-  color: #222;
+  background-color: #f9b122;
+  color: #4a4a4a;
   position: relative;
 }
 
@@ -994,7 +994,7 @@ Modules
 }
 
 .connect_list .articles_list--element.icas a, .connect_list .main_list .icas.articles_list--element-video a, .main_list .connect_list .icas.articles_list--element-video a, .connect_list .main_list .icas.articles_list--element-featured a, .main_list .connect_list .icas.articles_list--element-featured a, .connect_list .event_list .icas.articles_list--element-featured a, .event_list .connect_list .icas.articles_list--element-featured a {
-  color: #222;
+  color: #4a4a4a;
 }
 
 .connect_list .articles_list--element.linkedin, .connect_list .main_list .linkedin.articles_list--element-video, .main_list .connect_list .linkedin.articles_list--element-video, .connect_list .main_list .linkedin.articles_list--element-featured, .main_list .connect_list .linkedin.articles_list--element-featured, .connect_list .event_list .linkedin.articles_list--element-featured, .event_list .connect_list .linkedin.articles_list--element-featured {
@@ -1020,7 +1020,7 @@ Modules
 }
 
 .error_page p a {
-  color: #222;
+  color: #4a4a4a;
   text-decoration: none;
 }
 
@@ -1253,7 +1253,7 @@ header .menutrigger {
   background-color: #ffffff;
   margin: 10px 15px 20px 15px;
   padding: 10px 10px 10px 70px;
-  color: #222;
+  color: #4a4a4a;
   text-decoration: none;
   -webkit-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
   -moz-box-shadow: 0px 1px 10px 0px rgba(0, 0, 0, 0.2);
@@ -1350,7 +1350,9 @@ header .menutrigger {
 }
 
 .login .button {
-  background-color: #4197f8;
+  color: #4a4a4a;
+  background-color: #f9b122;
+  border: 1px solid #f9b122;
   font-size: 1.14286rem;
   font-weight: 400;
   padding: 0.6em 2.6em;
@@ -1360,9 +1362,8 @@ header .menutrigger {
 }
 
 .login .button:focus, .login .button:hover {
-  color: #ffffff;
   text-decoration: none;
-  background-color: #006EB6;
+  background-color: white;
 }
 
 .formatterwrapper {
@@ -1602,7 +1603,7 @@ header .menutrigger {
 
 .slide_in_menu_list--element a {
   text-decoration: none;
-  color: #222;
+  color: #4a4a4a;
   font-weight: 400;
 }
 
@@ -1689,7 +1690,7 @@ header .menutrigger {
 }
 
 .topics .active {
-  background-color: #81bb26;
+  background-color: #f9b122;
 }
 
 .nextButton {
