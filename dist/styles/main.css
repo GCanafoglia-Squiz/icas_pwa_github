@@ -2,7 +2,7 @@
  * version: 0.0.1
  * file:    main.css
  * author:  Squiz Australia
- * updated: Mon Nov 04 2019 10:28:14 GMT+0000 (Greenwich Mean Time)
+ * updated: Mon Nov 04 2019 10:48:27 GMT+0000 (Greenwich Mean Time)
  *
  * Table of Contents
  *
@@ -511,6 +511,7 @@ html {
 body {
   background: url(mysource_files/home_background.png) center center no-repeat;
   background-size: 100% 100%;
+  background-attachment: fixed;
   line-height: 1.7;
   color: #4a4a4a;
   font-weight: 400;
@@ -1423,6 +1424,7 @@ header .menutrigger {
 
 .formatterwrapper {
   background: url(mysource_files/login_background.png) center center/cover no-repeat;
+  background-attachment: fixed;
   position: fixed;
   top: 0;
   bottom: 0;
